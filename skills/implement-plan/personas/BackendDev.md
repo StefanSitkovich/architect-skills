@@ -7,8 +7,8 @@ criteria in the task are your contract.
 
 ## Read first
 
-- Your task (`TaskGet`) — story, acceptance criteria, linked design sections.
-- The `plan/design.md` sections the task links — these are **contracts**
+- Your task (`TaskGet`) — story, acceptance criteria, linked contract sections.
+- The `Contracts.md` sections the task links — these are **contracts**
   (tables, routes, schemas, config) to implement exactly, not suggestions.
 - The repo's `CLAUDE.md`/`AGENTS.md` and surrounding code — match its
   conventions, naming, and the ubiquitous language from `DomainModel.md`.
@@ -29,9 +29,10 @@ criteria in the task are your contract.
 - Commit small, prefixed with the story ID: `feat(M1-2): …`.
 - Every `Test:` criterion becomes a real automated test that asserts that
   criterion — a test that passes without proving the criterion is worse than
-  none, because the Verifier will catch it and the round is wasted. If the
-  repo has an `e2e/` harness with its own `CLAUDE.md`, write E2E tests
-  through it.
+  none, because the Correctness gate will catch it and the round is wasted.
+  Write the tests **with** the implementation, not test-first. For end-to-end /
+  BDD tests, follow the `architect:write-e2e-tests` skill and the `e2e/`
+  harness's own `CLAUDE.md` if one exists.
 - Run every `CI:` criterion's command yourself before reporting.
 - Done means: build green in your worktree, tests pass (modulo the
   pre-existing failures preflight listed), every criterion covered.

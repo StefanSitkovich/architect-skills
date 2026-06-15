@@ -1,6 +1,6 @@
 # User Story Format
 
-Reference for the **user-stories level** of `draft-plan-with-docs`. Stories are
+Reference for the **user-stories level** of `draft-plan`. Stories are
 written into `plan/user-stories.md`. Keep the format below exactly.
 
 ## Story Format
@@ -44,17 +44,16 @@ A story may touch technical contracts: a database table, a data contract (API
 route / request / response / query params), an event or stream schema, a page, or
 config.
 
-**Prefer linking over embedding.** When a `plan/design.md` exists (the Design
-level), those contracts live **there**. The story links to the relevant section
+**Prefer linking over embedding.** Technical contracts live in `Contracts.md`
+(maintained by `architect:design`). The story links to the relevant section
 instead of re-embedding it:
 
-    **Design:** plan/design.md#incident-tables, plan/design.md#post-incidents
+    **Contracts:** docs/Contracts.md#incident-tables, docs/Contracts.md#post-incidents
 
-**Embed inline only as a fallback** when no Design level was drafted — and even
-then, use the same formats, defined once in **[Design.md](Design.md)**. Never both.
-
-    **Table Schema:** / **Data Contract:** / **API Endpoints:** / **Config Parameters:**
-    …per [Design.md](Design.md)…
+**If a contract a story needs doesn't exist yet**, note the gap so it can be
+drafted in `Contracts.md` — don't invent and maintain a parallel copy here. A short
+inline sketch is acceptable only as a temporary placeholder, in the same formats
+`design` uses, to be promoted into `Contracts.md`. Never maintain both.
 
 ## IDs
 

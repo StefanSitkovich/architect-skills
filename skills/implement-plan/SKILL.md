@@ -11,7 +11,7 @@ description: >-
   compliance review of the implemented change). Also use to smoke-test the
   agent-team setup locally, or to resume a started implementation (a
   plan/implementation-state.md exists). Not for drafting plans
-  (draft-plan-with-docs) or for reviewing existing code or architecture
+  (draft-plan) or for reviewing existing code or architecture
   without a plan to execute.
 ---
 
@@ -19,8 +19,10 @@ description: >-
 
 Executes an existing plan with an agent team. The session that invokes this
 skill becomes the **team lead**. `<skill-dir>` below is this skill's base
-directory — pass file paths from it to teammates as absolute paths, because
-teammates don't inherit your skill context.
+directory; `<review-dir>` is the sibling `review-code` skill
+(`<skill-dir>/../review-code`) — the verification-gate personas live there, so
+gates and standalone reviews share one source. Pass file paths to teammates as
+absolute paths, because teammates don't inherit your skill context.
 
 ## Principles
 
@@ -38,8 +40,8 @@ teammates don't inherit your skill context.
   gates get fresh reviewers per story. Anyone approaching ~200k tokens hands
   off per [Handoff.md](Handoff.md) instead of degrading.
 - **Docs are read-only input.** Follow their terminology; report deviations
-  instead of patching docs (changing docs is `draft-docs`' job, changing the
-  plan is `draft-plan-with-docs`' job).
+  instead of patching docs (changing docs is `design`'s job, changing the
+  plan is `draft-plan`'s job).
 
 ## Input
 
@@ -47,10 +49,10 @@ teammates don't inherit your skill context.
 | ----- | -------------------------------------------------- | ---------------------------------------------- |
 | Plan  | `plan/user-stories.md`                              | any plan file or a pasted plan works           |
 | Scope | the whole plan                                      | or one milestone / named stories, per request  |
-| Docs  | `Architecture.md`, `DomainModel.md`, `plan/design.md` | context for personas and gates              |
+| Docs  | `Architecture.md`, `DomainModel.md`, `Contracts.md` | context for personas and gates                |
 
 Stories with `Test:` / `CI:` / `Check:`-prefixed acceptance criteria (the
-`draft-plan-with-docs` format) are used verbatim. For plan items without
+`draft-plan` format) are used verbatim. For plan items without
 acceptance criteria, derive minimal ones and list them in the kickoff report
 so the user can object before work starts.
 
@@ -84,7 +86,7 @@ file — on resume, the recorded slug wins. All branches live under
      its report before authorizing the next — two agents merging in the
      shared integration worktree at once corrupt it. If an implementer had to
      resolve non-trivial conflicts, send the merged result through the
-     Verifier once more.
+     Correctness gate once more.
    - **Silent teammates.** An idle notification without the expected report →
      nudge once via `SendMessage`; still silent on its next idle → shut it
      down and spawn a successor ([Handoff.md](Handoff.md)).
@@ -128,24 +130,30 @@ prompt — a CLI tool is "backend".
 ## Verification gates
 
 Spawn gate reviewers **fresh per story and per round** (fresh eyes are the
-point), in parallel, as background teammates with this template:
+point), in parallel, as background teammates. The personas are the review-code
+lenses ([review-code](../review-code/SKILL.md)); this template binds each
+generic lens to the in-flight harness:
 
 > You are "<gate>-<story-id>-r<round>" on team "<team>".
-> 1. Read `<skill-dir>/personas/<Gate>.md`.
-> 2. Verify story <story-id> (task #<id>): worktree `<path>`, branch
->    `<branch>`, integration branch `implement/<plan-slug>/integration`.
+> 1. Read `<review-dir>/personas/<Gate>.md` — your review lens.
+> 2. Subject: story <story-id> (task #<id>). The **change under review** is the
+>    merge-base diff of branch `<branch>` against the integration branch
+>    (`git diff implement/<plan-slug>/integration...<branch>`), in worktree
+>    `<path>`. The **spec** is the story's acceptance criteria (`TaskGet`
+>    #<id>); the **contracts** are the `Contracts.md` sections the task links.
 > 3. Baseline: build `<cmd>` · test `<cmd>` · pre-existing failures: <list
 >    from preflight>.
 > 4. The implementer reports: <report>. Treat it as a claim, not evidence.
-> 5. Send your verdict to "team-lead" via SendMessage, then you are done.
+> 5. Send your verdict (your persona's shape, with <story-id> as the subject)
+>    to "team-lead" via SendMessage, then you are done.
 
-| Gate                                     | Runs                                                              |
-| ---------------------------------------- | ----------------------------------------------------------------- |
-| [Verifier](personas/Verifier.md)         | always — semantic check of every acceptance criterion             |
-| [Architect](personas/Architect.md)       | always — change vs. `Architecture.md` / `DomainModel.md`          |
-| [Performance](personas/Performance.md)   | docs/design state budgets or NFRs, or the story touches a hot path or bulk data |
-| [Security](personas/Security.md)         | story touches authn/authz, input parsing, secrets, PII, new endpoints or dependencies |
-| [Compliance](personas/Compliance.md)     | docs carry regulatory requirements (audit, retention, licensing, residency) |
+| Gate                                                  | Runs                                                              |
+| ----------------------------------------------------- | ----------------------------------------------------------------- |
+| [Correctness](../review-code/personas/Correctness.md) | always — semantic check of every acceptance criterion             |
+| [Architect](../review-code/personas/Architect.md)     | always — change vs. `Architecture.md` / `DomainModel.md`          |
+| [Performance](../review-code/personas/Performance.md) | docs/contracts state budgets or NFRs, or the story touches a hot path or bulk data |
+| [Security](../review-code/personas/Security.md)       | story touches authn/authz, input parsing, secrets, PII, new endpoints or dependencies |
+| [Compliance](../review-code/personas/Compliance.md)   | docs carry regulatory requirements (audit, retention, licensing, residency) |
 
 …or whenever the user asks for a gate. Decide the optional gates per task in
 step 2, from the plan and docs — record the decision in the task description.
@@ -172,8 +180,8 @@ agent team works"), prove the machinery without a real plan. The slug is
 `smoke`; skip the state file. Run preflight (minus the plan check — there is
 no plan), create team `implement-smoke`,
 spawn one implementer whose task is a no-op story ("add a scratch file" with
-one `Check:` criterion) in a worktree, gate it with a fresh Verifier, let the
-implementer merge — then delegate teardown to a cleanup subagent: integration
+one `Check:` criterion) in a worktree, gate it with a fresh Correctness
+reviewer, let the implementer merge — then delegate teardown to a cleanup subagent: integration
 worktree and branch (`implement/smoke/integration`), any leftover story
 worktree or branch, `git worktree prune`. Shut down the teammates,
 `TeamDelete`, and report the checklist: worktrees ✓, team ✓, messaging ✓,

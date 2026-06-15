@@ -8,12 +8,12 @@ contract.
 ## Read first
 
 - Your task (`TaskGet`) — story, acceptance criteria, linked design sections.
-- The `### Pages` sections of `plan/design.md` and the ClickDummy
-  (`plan/clickdummy/` or the prototype link) if they exist — they define the
-  intended UI; deviate only with a reason you report.
-- API contracts in `plan/design.md` — code against the **contract**, not
-  against whatever the backend currently exposes. If the backend story isn't
-  merged yet, stub the contract; integration is proven after merge.
+- The `### Pages` sections of `Contracts.md` and the prototype / clickdummy
+  (see `architect:prototype`) if they exist — they define the intended UI;
+  deviate only with a reason you report.
+- API contracts in `Contracts.md` — code against the **contract**, not against
+  whatever the backend currently exposes. If the backend story isn't merged
+  yet, stub the contract; integration is proven after merge.
 - The repo's `CLAUDE.md`/`AGENTS.md` and surrounding code — match its
   conventions; UI labels follow the ubiquitous language from `DomainModel.md`.
 
@@ -31,8 +31,9 @@ contract.
 
 - Commit small, prefixed with the story ID: `feat(M1-4): …`.
 - Every `Test:` criterion becomes a real automated test asserting that
-  criterion (component test or E2E). If the repo has an `e2e/` harness with
-  its own `CLAUDE.md`, write E2E tests through it.
+  criterion (component test or E2E), written **with** the implementation, not
+  test-first. For end-to-end / BDD tests, follow the `architect:write-e2e-tests`
+  skill and the `e2e/` harness's own `CLAUDE.md` if one exists.
 - Run every `CI:` criterion's command yourself before reporting.
 - Cover the unhappy paths the criteria imply: loading, empty, and error
   states for every remote call the story adds.
@@ -43,7 +44,7 @@ contract.
 
 - Per acceptance criterion: how it is met and where (test name / command).
 - Pages/components added, stubs left in place pending backend merge.
-- Anything that deviates from the design pages, ClickDummy, or docs.
+- Anything that deviates from the contract pages, the prototype, or docs.
 
 After the gates pass, the lead will ask you to merge — never merge unasked,
 the lead serializes merges because the integration worktree is shared. In the

@@ -1,9 +1,11 @@
 ---
-name: draft-docs
+name: design
 description: >-
   Use when the user wants to create, change, extend, or restructure
-  single-source-of-truth project documentation — specs, design, requirements,
-  architecture, domain model / terminology, or entity docs (a DDD set or any docs)
+  single-source-of-truth project documentation — architecture, domain model /
+  terminology, entity docs, per-feature technical contracts, or a decision log
+  (a DDD set or any docs). Requirements have their own skill
+  (architect:requirements); this skill treats Requirements.md as read-only input.
 ---
 
 # Single-Source-of-Truth Docs
@@ -70,6 +72,15 @@ later agent) can tell it apart from an oversight:
 - Put it where the answer will live — the right doc and header — so the gap shows in
   context, and every open decision stays greppable as `TBD`.
 
+### Recording a settled decision — ADR
+
+The mirror of a `TBD`: when a **significant** decision lands — one a future reader
+would ask "why?" about — record it in `Decisions.md` as an ADR (format in
+[Decisions.md](Decisions.md)), and clear the `TBD` it resolves. Not every choice
+earns one; the log is for decisions worth explaining later, kept lean. Reversing a
+past decision (often where "zoom out" leads) is a *new* ADR that supersedes the old
+— never an edit to the old one.
+
 ### Zooming out — challenge the question, not the answer
 
 When the user zooms out — however they phrase it ("zoom out", "wrong question", "I
@@ -103,7 +114,7 @@ compare. A line or two in chat rarely carries it; produce a real **draw.io** fil
   `visualize` skill.
 
 **Mechanics** — write a self-contained `.drawio` to the OS temp dir (never the repo) at a fresh timestamped path (`$TMPDIR`, or
-`%TEMP%` on Windows → `…/draft-docs-viz/<topic>-<timestamp>.drawio`); put the
+`%TEMP%` on Windows → `…/design-viz/<topic>-<timestamp>.drawio`); put the
 options side by side; validate it as XML; open it (`start` / `open` / `xdg-open`); then
 state the full absolute path.
 
@@ -115,12 +126,15 @@ Each doc has a guidance file with per-header create / edit / delete rules.
 
 | Doc                   | Holds                                                                                       | Guidance                       |
 | --------------------- | ------------------------------------------------------------------------------------------- | ------------------------------ |
-| `Requirements.md`     | the *what* & *why* — vision, functional capabilities                                        | [Requirements.md](Requirements.md) |
-| `Architecture.md`     | the *how* — context, modules, tech stack, data flow                                         | [Architecture.md](Architecture.md) |
+| `Architecture.md`     | the durable *how* — context, modules, tech stack, data flow                                 | [Architecture.md](Architecture.md) |
+| `Contracts.md`        | per-feature technical contracts — tables, APIs, event schemas, pages, config                | [Contracts.md](Contracts.md)   |
 | `DomainModel.md`      | terminology SSoT — actors, core domain, relationships, bounded contexts, rules, glossary    | [DomainModel.md](DomainModel.md)   |
 | `entities/<Term>.md`  | one entity's structure — keys, status, fields                                               | [Entity.md](Entity.md)             |
+| `Decisions.md`        | the decision log — significant settled choices and why (ADRs)                               | [Decisions.md](Decisions.md)   |
 
-Add more docs as a project grows — most often one entity doc per major term.
+`Requirements.md` (the *what* & *why*) is maintained by **`architect:requirements`**;
+here it's read-only input you link to. Add more docs as a project grows — most often
+one entity doc per major term.
 
 ## Indexing docs in AGENTS.md / CLAUDE.md
 
@@ -132,7 +146,9 @@ single index table there linking every SSoT doc with a one-line summary:
 | ------------------ | -------------------------------------------- |
 | Vision & reqs      | [docs/Requirements.md](docs/Requirements.md) |
 | Context & data flow| [docs/Architecture.md](docs/Architecture.md) |
+| Contracts          | [docs/Contracts.md](docs/Contracts.md)       |
 | Terminology/domain | [docs/DomainModel.md](docs/DomainModel.md)   |
+| Decisions (ADRs)   | [docs/Decisions.md](docs/Decisions.md)       |
 ```
 
 - Creating a doc → add a row. Renaming/removing → update/remove the row.

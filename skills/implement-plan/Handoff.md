@@ -26,7 +26,7 @@ Worktrees dir: <path> · Baseline: build `<cmd>` · test `<cmd>`
 ## Stories
 | Task | Story | Status | Owner | Branch | Gates passed |
 |---|---|---|---|---|---|
-| #3 | M1-2 | merged | — | implement/<slug>/M1-2 | Verifier, Architect |
+| #3 | M1-2 | merged | — | implement/<slug>/M1-2 | Correctness, Architect |
 | #4 | M1-3 | in gate round 2/3 | backend-1 | implement/<slug>/M1-3 | — |
 
 ## Decisions & deviations
@@ -66,4 +66,4 @@ task, worktree, and branch — the handoff note plus `git log`/`git diff` in
 the worktree is the successor's starting context. One task should rarely need
 this; if a single story burns through two contexts, tell the lead it's too
 big and should be split (the lead reports that rather than splitting the plan
-itself — plans change via `draft-plan-with-docs`).
+itself — plans change via `draft-plan`).

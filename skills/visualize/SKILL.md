@@ -3,16 +3,19 @@ name: visualize
 description: >-
   Generates draw.io (diagrams.net) diagrams as a single multi-page .drawio file
   in a fresh, timestamped temp folder (never in the repo), validates it, and
-  opens it. Three standard modes, picked from an optional argument or detected
+  opens it. Four standard modes, picked from an optional argument or detected
   from the repo — code (C4 as built, dependency graph, sequence, class/ER from
-  the source tree), docs (user journey, DDD context map, event storming, C4
-  from the project docs), plan (story map, epic/story tree, roadmap timeline,
-  ER/API/event contracts from plan/) — plus an ad-hoc mode for anything else
-  worth drawing. Use when the user wants to visualize the code, architecture,
-  docs, domain, plan, or anything on the fly, asks for draw.io / diagrams.net
+  the source tree), docs (user journey, stakeholder grid, MoSCoW, NFR tree, DDD
+  context map, event storming, C4, ER/API/event contracts, ADR graph from the
+  project docs), plan (story map, epic/story tree, roadmap dependency order,
+  story→contract coverage from a plan/backlog), trace (named-only — the SDLC chain end to
+  end: requirement→decision→contract→story→test, highlighting orphans/gaps) —
+  plus an ad-hoc mode for anything else worth drawing. Use when the user wants to
+  visualize the code, architecture, docs, domain, plan, requirements, decisions,
+  traceability/coverage, or anything on the fly, asks for draw.io / diagrams.net
   diagrams, a C4 model, context map, story map, dependency graph, ER/class,
-  sequence, event-storming, or user-journey diagram, or runs /visualize
-  (optionally /visualize code|docs|plan|<topic>).
+  sequence, event-storming, ADR/decision, or user-journey diagram, or runs
+  /visualize (optionally /visualize code|docs|plan|trace|<topic>).
 ---
 
 # visualize – draw.io diagrams from code, docs, plan, or ad hoc
@@ -23,21 +26,21 @@ Diagrams are **derived views**, not a single source of truth.
 
 - **Never write into the repo.** No signpost entry (`CLAUDE.md`/`AGENTS.md`), no changelog.
 - Derive fresh from the chosen source each run. On contradictions, **report instead of guessing**.
-- Diagram labels use the project's documentation language; apply the ubiquitous language from the domain doc (e.g. `docs/DomainModel.md`) consistently.
+- Diagram labels use the project's own language; if the project has a glossary or domain model, apply that ubiquitous language consistently.
 
 ## Picking the mode
 
 The argument is **optional**. Resolve in this order:
 
-1. **Named mode** — the user said `code`, `docs`, or `plan`, or clearly meant one ("as built" → code, "the domain" → docs, "the roadmap" → plan). Use it.
-2. **Free-form subject** — the user named something that isn't one of the three sets (a single flow, one entity, a decision, something from the conversation). Use **Ad-hoc mode** below.
-3. **No hint** — detect what the repo offers: `plan/` files → plan, SSoT docs (`docs/*.md`) → docs, a detectable implementation → code. Exactly one match → use it; several → ask the user which (offering "all of them" is fine).
+1. **Named mode** — the user said `code`, `docs`, `plan`, or `trace`, or clearly meant one ("as built" → code, "the domain" → docs, "the roadmap" → plan, "what's not covered" / "orphans" / "coverage" → trace). Use it.
+2. **Free-form subject** — the user named something that isn't one of the standard sets (a single flow, one entity, a decision, something from the conversation). Use **Ad-hoc mode** below.
+3. **No hint** — detect what the repo offers: planning material (a backlog, roadmap, or `plan/` folder) → plan, project documentation → docs, a detectable implementation → code. Exactly one match → use it; several → ask the user which (offering "all of them" is fine). `trace` is never auto-detected — it spans several sources and would otherwise be shadowed by docs/plan, so it must be named explicitly.
 
-For a standard mode, read its reference — [Code.md](Code.md), [Docs.md](Docs.md), or [Plan.md](Plan.md) — for sources, views, and mode-specific assumptions. Each standard mode produces **≥ 6 pages**. If the chosen mode's sources are missing, say so and name the modes whose sources do exist instead.
+For a standard mode, read its reference — [Code.md](Code.md), [Docs.md](Docs.md), [Plan.md](Plan.md), or [Trace.md](Trace.md) — for sources, views, and mode-specific assumptions. Code, docs, and plan each produce **≥ 6 pages**; trace draws the cuts its sources support, always including the spine and the orphan report. If the chosen mode's sources are missing, say so and name the modes whose sources do exist instead.
 
 ## Ad-hoc mode
 
-For anything that doesn't fit the three sets:
+For anything that doesn't fit a standard mode:
 
 - **Scope = the request.** Draw exactly what the user asked about, from whatever source fits (code, docs, plan, or the conversation itself).
 - **No page minimum.** One page is fine; add pages only when they clarify.

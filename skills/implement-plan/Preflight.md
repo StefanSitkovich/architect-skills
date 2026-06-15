@@ -39,7 +39,7 @@ Run in order; keep going after a failure so the report is complete.
    gates later don't blame implementers for them. Finding **no** way to build
    or test is a FAIL: gates would have nothing to verify with.
 5. **Plan** — the plan file exists (or the pasted plan was provided), the
-   in-scope items are identifiable, and their links to `plan/design.md` /
+   in-scope items are identifiable, and their links to `Contracts.md` /
    docs resolve. Items without acceptance criteria are not a FAIL — list them
    so the lead derives criteria visibly.
 
