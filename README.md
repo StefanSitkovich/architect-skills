@@ -3,7 +3,7 @@
 Skills that mirror the software-development lifecycle, from requirements to code
 review. The chain: **requirements → design → draft-plan →
 prototype → write-e2e-tests → implement-plan → review-code**, with **visualize**
-cross-cutting throughout.
+and **serve-docs** cross-cutting throughout.
 
 ## Skills
 
@@ -17,6 +17,7 @@ cross-cutting throughout.
 | `implement-plan` | Execute an existing plan with an agent team — a delegating-only team lead, dev personas in isolated git worktrees, and per-story verification gates (sourced from `review-code`). |
 | `review-code` | Review or audit existing code — a PR, branch, module, or whole repo — with fresh per-lens reviewers (correctness, architecture, performance, security, compliance). Owns the review personas the `implement-plan` gates reuse. |
 | `visualize` | draw.io diagrams from the code, docs, or plan (mode optional — detected from the request/repo), the SDLC chain traced end-to-end to surface coverage gaps (`trace`), or anything ad hoc. |
+| `serve-docs` | Launch a live, browser-based docs site (a Docsify SPA) over the SSoT docs on a local port — rendered Markdown, Mermaid diagrams, search, clickable cross-doc links, and live reload on save. The doc-producing skills carry matching lint scripts so their docs stay renderable. |
 
 ## Install
 

@@ -36,6 +36,26 @@ per-header create / edit / delete rules.
 3. **Make the change** in the doc's existing style and section, following the
    create / edit / delete rule for the affected header.
 4. **Report** any contradictions or open questions you found.
+5. **Lint** the doc you changed (below) and fix what it reports — loop until clean.
+
+## Lint the docs
+
+After **every edit** to a doc, run this skill's structure linter on the changed
+file and fix what it reports — **loop until it passes** (no errors):
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/skills/design/lint.mjs" <path/to/the-doc.md>
+```
+
+It picks the schema by filename — `Architecture.md` (Context, Modules, Tech
+Stack, Data Flow), `DomainModel.md` (Actors, Core Domain, Relationships, Bounded
+Contexts, Business Rules), `entities/<Term>.md` (Description, Key(s), Fields /
+Information), `Decisions.md` (each `### ADR-NNNN` carries Status / Context /
+Decision / Consequences / Alternatives), and `Contracts.md` (feature-grouped, so
+structural checks are relaxed) — plus the checks that keep the docs renderable in
+`architect:serve-docs`: closed/valid ` ```mermaid ` fences, resolvable relative
+links, a single H1. A missing required section is an **error**: scaffold the
+header and capture the gap as a `TBD` rather than omitting it.
 
 ## Drafting: interview, don't invent
 

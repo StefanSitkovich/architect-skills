@@ -61,6 +61,23 @@ Add the doc to the index in `AGENTS.md` / `CLAUDE.md` (the indexing rule is in
    linking domain terms to `DomainModel.md`.
 4. **Report** — what you captured, plus the open `TBD`s and any contradictions.
 
+## Lint the doc
+
+After **every edit** to `Requirements.md`, run this skill's structure linter and
+fix what it reports — **loop until it passes** (no errors):
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/skills/requirements/lint.mjs" <path/to/Requirements.md>
+```
+
+It enforces the section structure above (Vision, Stakeholders & Personas,
+Functional Requirements, Non-Functional Requirements, Success Metrics,
+Constraints & Assumptions, Prioritization) plus the checks that keep the doc
+renderable in `architect:serve-docs` — closed/valid ` ```mermaid ` fences,
+resolvable relative links, a single H1. A missing section is an **error**:
+scaffold the header and capture the gap as a `TBD` rather than omitting it. Keep
+re-running after each fix until it's clean.
+
 ## Interview affordances
 
 Besides answering, three responses are always open at any question:

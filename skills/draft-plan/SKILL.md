@@ -44,6 +44,23 @@ of re-embedding them.
 4. **Draft** the single level into its `plan/` file (formats above).
 5. **Report** — summarize what you drafted; surface gaps or contradictions you
    found against the docs.
+6. **Lint** the file you wrote (below) and fix what it reports — loop until clean.
+
+## Lint the plan
+
+After **every edit** to a `plan/` file, run this skill's structure linter and fix
+what it reports — **loop until it passes** (no errors):
+
+```bash
+node "${CLAUDE_PLUGIN_ROOT}/skills/draft-plan/lint.mjs" <path/to/plan/file.md>
+```
+
+It checks the format by filename — `roadmap.md` (each `## Milestone N — …` carries
+**Goal** / **Scope** / **Depends on**) and `user-stories.md` (each `#### <ID> — …`
+carries **As a** / **I want** / **so that** and an **Acceptance Criteria** section)
+— plus the checks that keep the plan renderable in `architect:serve-docs`:
+closed/valid ` ```mermaid ` fences, resolvable relative links, a single H1. A
+missing field is an **error**; fix it and re-run until clean.
 
 The Roadmap level is drafted straight from its reference file
 ([Roadmap.md](Roadmap.md)). The User Stories level has extra steps:
