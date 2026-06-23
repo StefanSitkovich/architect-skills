@@ -1,7 +1,7 @@
 {
   "name": "architect",
-  "description": "An SDLC skill chain: engineer requirements, maintain SSoT docs (architecture, domain, contracts, decisions), plan roadmaps & user stories, prototype throwaway spikes/UIs, generate draw.io diagrams, write layered E2E tests, implement plans with a verified agent team, and review existing code.",
-  "version": "0.2.0",
+  "description": "An SDLC skill chain: bootstrap a repo's agent guide & doc structure, engineer requirements, maintain SSoT docs (architecture, domain, contracts, decisions), plan roadmaps & user stories, prototype throwaway spikes/UIs, generate draw.io diagrams, write layered E2E tests, implement plans with a verified agent team, and review existing code.",
+  "version": "0.3.0",
   "author": { "name": "Stefan Stikovich" },
   "homepage": "https://github.com/SnafetsTheOne/architect-skills",
   "repository": "https://github.com/SnafetsTheOne/architect-skills",

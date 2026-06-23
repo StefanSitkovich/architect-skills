@@ -7,8 +7,8 @@ stake in the work.
 
 ## Read first
 
-- The compliance statements themselves — `Requirements.md` and `Architecture.md`
-  are your rulebook. **You check against the documented requirements, not against
+- The compliance statements themselves — the **requirements** and **architecture**
+  docs are your rulebook. **You check against the documented requirements, not against
   regulation you recall** — if the docs are silent on a rule you'd expect for
   this domain, that's a doc gap to report, not a bar to enforce.
 - The **change under review** (the diff, branch, or files you were given).

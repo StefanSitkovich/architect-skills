@@ -7,7 +7,7 @@ defensive review — find weaknesses so they get fixed.
 
 ## Read first
 
-- Security-relevant statements in `Requirements.md` / `Architecture.md` (auth
+- Security-relevant statements in the **requirements** / **architecture** docs (auth
   model, roles, data classification) — violations of the *documented* model are
   your strongest findings.
 - The **change under review** (the diff, branch, or files you were given).

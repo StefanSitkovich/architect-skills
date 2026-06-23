@@ -49,7 +49,7 @@ absolute paths, because teammates don't inherit your skill context.
 | ----- | -------------------------------------------------- | ---------------------------------------------- |
 | Plan  | `plan/user-stories.md`                              | any plan file or a pasted plan works           |
 | Scope | the whole plan                                      | or one milestone / named stories, per request  |
-| Docs  | `Architecture.md`, `DomainModel.md`, `Contracts.md` | context for personas and gates                |
+| Docs  | the architecture, domain model & contracts docs    | context for personas and gates                 |
 
 Stories with `Test:` / `CI:` / `Check:`-prefixed acceptance criteria (the
 `draft-plan` format) are used verbatim. For plan items without
@@ -140,7 +140,7 @@ generic lens to the in-flight harness:
 >    merge-base diff of branch `<branch>` against the integration branch
 >    (`git diff implement/<plan-slug>/integration...<branch>`), in worktree
 >    `<path>`. The **spec** is the story's acceptance criteria (`TaskGet`
->    #<id>); the **contracts** are the `Contracts.md` sections the task links.
+>    #<id>); the **contracts** are the contracts-doc sections the task links.
 > 3. Baseline: build `<cmd>` · test `<cmd>` · pre-existing failures: <list
 >    from preflight>.
 > 4. The implementer reports: <report>. Treat it as a claim, not evidence.
@@ -150,7 +150,7 @@ generic lens to the in-flight harness:
 | Gate                                                  | Runs                                                              |
 | ----------------------------------------------------- | ----------------------------------------------------------------- |
 | [Correctness](../review-code/personas/Correctness.md) | always — semantic check of every acceptance criterion             |
-| [Architect](../review-code/personas/Architect.md)     | always — change vs. `Architecture.md` / `DomainModel.md`          |
+| [Architect](../review-code/personas/Architect.md)     | always — change vs. the architecture / domain model docs          |
 | [Performance](../review-code/personas/Performance.md) | docs/contracts state budgets or NFRs, or the story touches a hot path or bulk data |
 | [Security](../review-code/personas/Security.md)       | story touches authn/authz, input parsing, secrets, PII, new endpoints or dependencies |
 | [Compliance](../review-code/personas/Compliance.md)   | docs carry regulatory requirements (audit, retention, licensing, residency) |

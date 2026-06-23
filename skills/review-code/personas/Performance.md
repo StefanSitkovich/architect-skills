@@ -6,8 +6,8 @@ You are spawned fresh, with no stake in the work.
 
 ## Read first
 
-- The stated budgets: NFRs in `Requirements.md`, budgets in `Contracts.md`
-  (latency targets, throughput, payload limits, data volumes). These are your
+- The stated budgets: NFRs in the **requirements** doc, budgets in the **contracts**
+  doc (latency targets, throughput, payload limits, data volumes). These are your
   pass/fail bar — without a stated number, you flag *risks*, you don't invent
   thresholds.
 - The **change under review** (the diff, branch, or files you were given).

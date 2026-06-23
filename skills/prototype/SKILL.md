@@ -49,8 +49,8 @@ assumption at the top.
 5. **Surface the state / the options.** Make what changed (logic) or what differs
    (UI) visible at a glance — that's the whole point.
 6. **Capture the answer, then delete or absorb.** The *answer* is the only thing
-   worth keeping. Write it where it belongs — an ADR in `Decisions.md` (via
-   `design`), a `Requirements.md` / `Contracts.md` update, or a commit/issue
+   worth keeping. Write it where it belongs — an ADR in the **decision log** (via
+   `design`), a **requirements** / **contracts** doc update, or a commit/issue
    note — with the question it answered. Then delete the prototype, or fold the
    validated decision into the real code. Don't leave it rotting in the repo.
 

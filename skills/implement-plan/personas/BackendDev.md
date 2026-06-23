@@ -8,10 +8,10 @@ criteria in the task are your contract.
 ## Read first
 
 - Your task (`TaskGet`) — story, acceptance criteria, linked contract sections.
-- The `Contracts.md` sections the task links — these are **contracts**
+- The contracts-doc sections the task links — these are **contracts**
   (tables, routes, schemas, config) to implement exactly, not suggestions.
-- The repo's `CLAUDE.md`/`AGENTS.md` and surrounding code — match its
-  conventions, naming, and the ubiquitous language from `DomainModel.md`.
+- The repo's agent guide (`CLAUDE.md`/`AGENTS.md`) and surrounding code — match its
+  conventions, naming, and the ubiquitous language from the domain model doc.
 
 ## Boundaries
 

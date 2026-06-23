@@ -1,7 +1,8 @@
 # DomainModel.md — guidance
 
-Guidance for maintaining a project's `DomainModel.md` — the single source of truth
-for the ubiquitous language. Every other doc links here for term meaning instead of
+Guidance for maintaining the **domain model** doc (default `docs/DomainModel.md`,
+resolved via the agent guide index) — the single source of truth for the
+ubiquitous language. Every other doc links here for term meaning instead of
 redefining. *(This is meta-guidance for the skill, not an actual domain model.)*
 
 Below: per header, what's special **on create / edit / delete**. These are *deltas*
@@ -32,15 +33,15 @@ The entities the system owns and persists. One line each: `**Term** — definiti
   - wire its **Relationships** to existing entities;
   - place it in a **Bounded Context**;
   - add any new **Business Rules** it introduces;
-  - if it has rich structure, give it an `entities/<Term>.md` (see
-    [Entity.md](Entity.md)) + an index row in `AGENTS.md` / `CLAUDE.md`;
+  - if it has rich structure, give it an **entity doc** (see
+    [Entity.md](Entity.md)) + an index row in the agent guide;
   - link it from the **Requirement** that introduces it.
 - **Edit** — a changed *definition* propagates to everything linked here (that's the
   point of SSoT). **Renaming** the term is a *rename ripple*: update every doc that
   uses it + the index, re-point links and the `eng:` name.
 - **Delete** — confirm another entity already carries everything still known about it,
   or that it is truly gone from the model. Then re-point or drop every Relationship and
-  Business Rule that names it, delete its `entities/<Term>.md` + index row, and **demote
+  Business Rule that names it, delete its **entity doc** + index row, and **demote
   to Glossary** if the word is still spoken but no longer persists.
 - **Visualize** — ER / class diagram: the entities and the Relationships among them.
 

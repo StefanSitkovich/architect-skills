@@ -1,7 +1,8 @@
 # Entity.md — guidance
 
-How to write and maintain an `entities/<Term>.md` — the detailed structure of one
-Core Domain term. The term's *meaning* stays in `DomainModel.md`; this doc elaborates
+How to write and maintain an **entity doc** (default `docs/entities/<Term>.md`,
+resolved via the agent guide index) — the detailed structure of one Core Domain
+term. The term's *meaning* stays in the **domain model** doc; this doc elaborates
 only its structure. *(Meta-guidance for the skill, not an actual entity.)*
 
 Per header, deltas from the standard workflow in
@@ -15,11 +16,11 @@ Give a term its own doc when it has **rich structure** — its own keys, a lifec
 consistent within a project: document only the rich entities, or give every core
 entity a doc — don't mix.
 
-Creating one → also add the index row in `AGENTS.md` / `CLAUDE.md`.
+Creating one → also add the index row in the agent guide.
 
 ## Description
 
-- **Create** — one or two lines; link the `DomainModel.md` term, don't restate its
+- **Create** — one or two lines; link the **domain model** term, don't restate its
   meaning.
 
 > Detailed structure of the **Expense** entity. The term is defined once in the
@@ -52,8 +53,8 @@ Lifecycle states — **omit the whole section if the entity has none.**
 
 The data the entity holds.
 
-- **Create** — `**Name** — what it is`; link types/terms to their SSoT (`DomainModel.md`,
-  `Architecture.md`).
+- **Create** — `**Name** — what it is`; link types/terms to their SSoT (the
+  **domain model** and **architecture** docs).
 - **Visualize** — single-entity ER / class box: this entity's keys and fields in one box.
 
 > - **Amount** — a monetary value (single currency, see [Architecture](../Architecture.md))

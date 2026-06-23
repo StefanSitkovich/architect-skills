@@ -11,7 +11,7 @@ check, answered by *building the smallest risky slice* — not by a paper review
 1. **State the risk as a falsifiable question** — one line: the specific unknown and
    what result counts as "works" vs "doesn't". "Can Postgres `LISTEN/NOTIFY` fan out
    to 500 subscribers within our latency budget?" beats "try the messaging". Pull
-   the budget from the NFRs in `Requirements.md` where one exists.
+   the budget from the NFRs in the **requirements** doc where one exists.
 2. **Build the thinnest slice through the risk** — only the part in doubt, with real
    versions of the risky pieces (the actual library, broker, dataset shape) and
    stubs for everything else. No surrounding app, no polish.
@@ -19,7 +19,7 @@ check, answered by *building the smallest risky slice* — not by a paper review
    compare to the "works" criterion from step 1. Label anything you couldn't measure
    as an estimate.
 4. **Capture the verdict** — works / doesn't / works-with-caveats, plus the evidence
-   — almost always an **ADR** in `Decisions.md` (via `design`), since a spike's
+   — almost always an **ADR** in the **decision log** (via `design`), since a spike's
    whole output is a technical decision and its rationale. Note any caveat the real
    implementation must honour.
 5. **Delete the spike** — the tracer is disposable; the decision is what's kept.

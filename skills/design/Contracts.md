@@ -1,17 +1,18 @@
 # Contracts.md — guidance
 
-Guidance for maintaining a project's `Contracts.md` — the **per-feature technical
-contracts** work must honor: database tables, API / data contracts, event /
-stream schemas, pages, and config. The durable system-level *how* lives in
-`Architecture.md`; term meanings in `DomainModel.md`; capabilities in
-`Requirements.md` — link, don't restate. *(Meta-guidance for the skill, not an
+Guidance for maintaining the **contracts doc** (default `docs/Contracts.md`,
+resolved via the agent guide index) — the **per-feature technical contracts**
+work must honor: database tables, API / data contracts, event / stream schemas,
+pages, and config. The durable system-level *how* lives in the **architecture**
+doc; term meanings in the **domain model** doc; capabilities in the
+**requirements** doc — link, don't restate. *(Meta-guidance for the skill, not an
 actual contracts doc.)*
 
 A contract starts here, scoped to the feature that introduces it. **When a
 contract becomes standing** — every feature now depends on it, it is no longer
-"this feature's" — promote the *rule* it encodes into `Architecture.md` (a stack
-choice, a boundary, a cross-cutting pattern) and keep the concrete schema here.
-That promotion is the line between this doc and `Architecture.md`.
+"this feature's" — promote the *rule* it encodes into the **architecture** doc (a
+stack choice, a boundary, a cross-cutting pattern) and keep the concrete schema
+here. That promotion is the line between this doc and the architecture doc.
 
 Per header, deltas from the standard workflow in
 [SKILL.md](SKILL.md#workflow-for-every-change) on **create / edit / delete** —
@@ -32,7 +33,7 @@ Pseudo-SQL `CREATE TABLE` per table: schema, table, every column with its type a
 nullability; `--` comments for anything non-obvious.
 
 - **Create** — list all columns incl. PKs/FKs; use the target DB's type names
-  (`BIGINT`, `TEXT`, `TIMESTAMP`, `BOOLEAN`). Link the entity to `DomainModel.md`.
+  (`BIGINT`, `TEXT`, `TIMESTAMP`, `BOOLEAN`). Link the entity to the domain model doc.
 - **Edit** — for an alter, show only the affected columns with
   `-- ADD` / `-- DROP` / `-- MODIFY`.
 - **Visualize** — ER diagram: the tables and the relationships among them.

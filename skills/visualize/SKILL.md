@@ -24,7 +24,7 @@ description: >-
 
 Diagrams are **derived views**, not a single source of truth.
 
-- **Never write into the repo.** No signpost entry (`CLAUDE.md`/`AGENTS.md`), no changelog.
+- **Never write into the repo.** No signpost entry (the agent guide), no changelog.
 - Derive fresh from the chosen source each run. On contradictions, **report instead of guessing**.
 - Diagram labels use the project's own language; if the project has a glossary or domain model, apply that ubiquitous language consistently.
 

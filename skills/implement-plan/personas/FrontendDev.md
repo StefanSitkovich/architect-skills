@@ -8,14 +8,14 @@ contract.
 ## Read first
 
 - Your task (`TaskGet`) — story, acceptance criteria, linked design sections.
-- The `### Pages` sections of `Contracts.md` and the prototype / clickdummy
+- The `### Pages` sections of the contracts doc and the prototype / clickdummy
   (see `architect:prototype`) if they exist — they define the intended UI;
   deviate only with a reason you report.
-- API contracts in `Contracts.md` — code against the **contract**, not against
+- API contracts in the contracts doc — code against the **contract**, not against
   whatever the backend currently exposes. If the backend story isn't merged
   yet, stub the contract; integration is proven after merge.
-- The repo's `CLAUDE.md`/`AGENTS.md` and surrounding code — match its
-  conventions; UI labels follow the ubiquitous language from `DomainModel.md`.
+- The repo's agent guide (`CLAUDE.md`/`AGENTS.md`) and surrounding code — match its
+  conventions; UI labels follow the ubiquitous language from the domain model doc.
 
 ## Boundaries
 

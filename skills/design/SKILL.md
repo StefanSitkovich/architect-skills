@@ -5,7 +5,8 @@ description: >-
   single-source-of-truth project documentation — architecture, domain model /
   terminology, entity docs, per-feature technical contracts, or a decision log
   (a DDD set or any docs). Requirements have their own skill
-  (architect:requirements); this skill treats Requirements.md as read-only input.
+  (architect:requirements); this skill treats the requirements doc as read-only
+  input. The agent guide and the doc index are established by architect:setup.
 ---
 
 # Single-Source-of-Truth Docs
@@ -29,8 +30,8 @@ per-header create / edit / delete rules.
 
 ## Workflow for every change
 
-1. **Read first** — the target doc, the docs it links to, the doc index in
-   `AGENTS.md` / `CLAUDE.md`, and the doc's guidance file (table below).
+1. **Read first** — the target doc, the docs it links to, the doc index in the
+   agent guide, and the doc's guidance file (table below).
 2. **SSoT check** — is this fact already documented? → keep it there and link.
    Where should it live? → the doc whose guidance says it belongs there.
 3. **Make the change** in the doc's existing style and section, following the
@@ -75,7 +76,7 @@ later agent) can tell it apart from an oversight:
 ### Recording a settled decision — ADR
 
 The mirror of a `TBD`: when a **significant** decision lands — one a future reader
-would ask "why?" about — record it in `Decisions.md` as an ADR (format in
+would ask "why?" about — record it in the **decision log** as an ADR (format in
 [Decisions.md](Decisions.md)), and clear the `TBD` it resolves. Not every choice
 earns one; the log is for decisions worth explaining later, kept lean. Reversing a
 past decision (often where "zoom out" leads) is a *new* ADR that supersedes the old
@@ -120,42 +121,39 @@ state the full absolute path.
 
 ## What lives in which doc
 
-Keep each fact in exactly one doc. Section names are illustrative — follow the
-project's language and conventions; the point is *what information lives where*.
-Each doc has a guidance file with per-header create / edit / delete rules.
+Keep each fact in exactly one doc, keyed by *concept* — what information lives
+where. Each concept resolves to a file via the doc index in the agent guide (the
+**resolution rule**, set by `architect:setup`); the default filenames below are
+just the starting point a project may rename. Section names within a doc are
+illustrative — follow the project's language and conventions. Each doc has a
+guidance file with per-header create / edit / delete rules.
 
-| Doc                   | Holds                                                                                       | Guidance                       |
-| --------------------- | ------------------------------------------------------------------------------------------- | ------------------------------ |
-| `Architecture.md`     | the durable *how* — context, modules, tech stack, data flow                                 | [Architecture.md](Architecture.md) |
-| `Contracts.md`        | per-feature technical contracts — tables, APIs, event schemas, pages, config                | [Contracts.md](Contracts.md)   |
-| `DomainModel.md`      | terminology SSoT — actors, core domain, relationships, bounded contexts, rules, glossary    | [DomainModel.md](DomainModel.md)   |
-| `entities/<Term>.md`  | one entity's structure — keys, status, fields                                               | [Entity.md](Entity.md)             |
-| `Decisions.md`        | the decision log — significant settled choices and why (ADRs)                               | [Decisions.md](Decisions.md)   |
+| Concept            | Holds                                                                                       | Default file           | Guidance                       |
+| ------------------ | ------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------ |
+| architecture doc   | the durable *how* — context, modules, tech stack, data flow                                 | `docs/Architecture.md` | [Architecture.md](Architecture.md) |
+| contracts doc      | per-feature technical contracts — tables, APIs, event schemas, pages, config                | `docs/Contracts.md`    | [Contracts.md](Contracts.md)   |
+| domain model doc   | terminology SSoT — actors, core domain, relationships, bounded contexts, rules, glossary    | `docs/DomainModel.md`  | [DomainModel.md](DomainModel.md)   |
+| entity docs        | one entity's structure — keys, status, fields                                               | `docs/entities/<Term>.md` | [Entity.md](Entity.md)             |
+| decision log       | significant settled choices and why (ADRs)                                                  | `docs/Decisions.md`    | [Decisions.md](Decisions.md)   |
 
-`Requirements.md` (the *what* & *why*) is maintained by **`architect:requirements`**;
-here it's read-only input you link to. Add more docs as a project grows — most often
-one entity doc per major term.
+The **requirements doc** (the *what* & *why*) is maintained by
+**`architect:requirements`**; here it's read-only input you link to. Add more docs
+as a project grows — most often one entity doc per major term.
 
-## Indexing docs in AGENTS.md / CLAUDE.md
+## Indexing docs in the agent guide
 
-The agent guide should **point to** docs, never duplicate their content. Keep a
-single index table there linking every SSoT doc with a one-line summary:
+The agent guide (`AGENTS.md` / `CLAUDE.md`, established by `architect:setup`)
+**points to** docs, never duplicates their content. Its Document Index is the
+authoritative concept→file map; keep it current as you work:
 
-```md
-| Topic              | Document                                     |
-| ------------------ | -------------------------------------------- |
-| Vision & reqs      | [docs/Requirements.md](docs/Requirements.md) |
-| Context & data flow| [docs/Architecture.md](docs/Architecture.md) |
-| Contracts          | [docs/Contracts.md](docs/Contracts.md)       |
-| Terminology/domain | [docs/DomainModel.md](docs/DomainModel.md)   |
-| Decisions (ADRs)   | [docs/Decisions.md](docs/Decisions.md)       |
-```
-
-- Creating a doc → add a row. Renaming/removing → update/remove the row.
-- No index yet? Create one.
+- Creating a doc → add a row. Renaming/relocating → update the row. Removing →
+  remove the row.
+- No index yet? That's `architect:setup`'s job — run it, or create the index
+  table as it specifies (format in [AgentGuide.md](../setup/AgentGuide.md)).
 
 ## Creating a new document
 
-1. Create it in the docs location, in the project's language and style; link to
-   existing facts instead of restating them. Follow its guidance file (table above).
-2. Add it to the index in `AGENTS.md` / `CLAUDE.md`.
+1. Resolve where it goes from the doc index (or the default above); create it in
+   the project's language and style, linking to existing facts instead of
+   restating them. Follow its guidance file (table above).
+2. Add it to the index in the agent guide.

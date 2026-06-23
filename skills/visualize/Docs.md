@@ -4,7 +4,7 @@ The docs are authoritative; regenerate fresh from them each run.
 
 ## Precondition
 
-The project's prose documentation — requirements / spec material, an architecture or design doc, interface contracts (API specs, DB schema, event definitions), a glossary or domain model, a decision log. **Discover what exists**: follow the doc index in `AGENTS.md` / `CLAUDE.md` or the README if there is one; otherwise scan the docs folder / wiki the repo keeps. File names vary by project — match on **content, not a fixed filename**. Not every kind need exist; draw the views the available docs support and note which were skipped for lack of source.
+The project's prose documentation — requirements / spec material, an architecture or design doc, interface contracts (API specs, DB schema, event definitions), a glossary or domain model, a decision log. **Discover what exists**: follow the doc index in the agent guide (`AGENTS.md` / `CLAUDE.md`) or the README if there is one; otherwise scan the docs folder / wiki the repo keeps. File names vary by project — match on **content, not a fixed filename**. Not every kind need exist; draw the views the available docs support and note which were skipped for lack of source.
 
 ## Views (≥ 6 pages)
 

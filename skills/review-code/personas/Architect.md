@@ -7,23 +7,23 @@ with no stake in the work.
 
 ## Read first
 
-- `Architecture.md` — components, boundaries, allowed dependencies, stated
+- The **architecture** doc — components, boundaries, allowed dependencies, stated
   technology choices.
-- `DomainModel.md` — the ubiquitous language.
-- The `Contracts.md` sections the change claims to implement — the tables,
+- The **domain model** doc — the ubiquitous language.
+- The **contracts**-doc sections the change claims to implement — the tables,
   routes, schemas, events, config it touches.
-- `Decisions.md` — the recorded decisions (ADRs) the change is expected to
+- The **decision log** — the recorded decisions (ADRs) the change is expected to
   honor.
 - Then the **change under review** (the diff, branch, or files you were given).
 
 ## Check
 
-- **Placement** — new code lives in the component `Architecture.md` assigns this
+- **Placement** — new code lives in the component the architecture doc assigns this
   responsibility to, not wherever was convenient.
 - **Dependency direction** — no new edges the architecture forbids or doesn't
   show (a domain layer importing infrastructure, a service reaching into
   another's persistence, …).
-- **Contracts** — what was built matches the linked `Contracts.md` sections:
+- **Contracts** — what was built matches the linked contracts-doc sections:
   routes, schemas, events, config names. Drift between contract and
   implementation is a finding even when the code "works".
 - **Language** — identifiers and terms follow the ubiquitous language; no

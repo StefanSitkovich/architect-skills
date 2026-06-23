@@ -1,7 +1,8 @@
 # Decisions.md — guidance
 
-Guidance for maintaining a project's `Decisions.md` — the **decision log**: the
-significant choices the project has settled, and *why*. It is the counterpart to
+Guidance for maintaining the **decision log** (default `docs/Decisions.md`,
+resolved via the agent guide index): the significant choices the project has
+settled, and *why*. It is the counterpart to
 the open questions captured as `TBD` and re-opened on "zoom out" (see
 [SKILL.md](SKILL.md)): a `TBD` is a decision **not yet made**; an entry here is one
 **made** — recorded so a future reader (or agent) needn't reverse-engineer the
@@ -27,9 +28,9 @@ sequentially:
     **Consequences:** <what it makes easy, what it costs, what it rules out>
     **Alternatives:** <what else was weighed, and why not>
 
-- **Create** — append a new ADR; link the docs it touches (`Architecture.md`,
-  `Contracts.md`, the entity). If it settles a `TBD`, clear that `TBD` in the same
-  pass.
+- **Create** — append a new ADR; link the docs it touches (the **architecture**
+  and **contracts** docs, the entity). If it settles a `TBD`, clear that `TBD` in
+  the same pass.
 - **Edit** — an Accepted ADR is **immutable**; don't rewrite history. New
   information → a *new* ADR that supersedes it.
 - **Delete** — never. To reverse a decision (the "zoom out" outcome), add a new

@@ -44,16 +44,17 @@ A story may touch technical contracts: a database table, a data contract (API
 route / request / response / query params), an event or stream schema, a page, or
 config.
 
-**Prefer linking over embedding.** Technical contracts live in `Contracts.md`
-(maintained by `architect:design`). The story links to the relevant section
+**Prefer linking over embedding.** Technical contracts live in the **contracts**
+doc (maintained by `architect:design`). The story links to the relevant section
 instead of re-embedding it:
 
     **Contracts:** docs/Contracts.md#incident-tables, docs/Contracts.md#post-incidents
 
 **If a contract a story needs doesn't exist yet**, note the gap so it can be
-drafted in `Contracts.md` — don't invent and maintain a parallel copy here. A short
-inline sketch is acceptable only as a temporary placeholder, in the same formats
-`design` uses, to be promoted into `Contracts.md`. Never maintain both.
+drafted in the **contracts** doc — don't invent and maintain a parallel copy here.
+A short inline sketch is acceptable only as a temporary placeholder, in the same
+formats `design` uses, to be promoted into the **contracts** doc. Never maintain
+both.
 
 ## IDs
 
