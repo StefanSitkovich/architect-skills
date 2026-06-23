@@ -18,8 +18,9 @@ answer, throw the rest away.
 
 ## Pick a branch
 
-Identify the question — from the prompt, the surrounding code, or by asking if the
-user is around:
+Identify the question — from the prompt, the surrounding code, or by asking the
+user if they're around (in chat, as plain text — never via the `AskUserQuestion`
+tool, which pins them to a menu instead of an open answer):
 
 | The question                                            | Branch                       | Shape                                                                       |
 | ------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------- |

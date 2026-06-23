@@ -52,6 +52,10 @@ you reach a shared understanding:
   confirms or corrects rather than starting from blank.
 - **Explore before asking.** If existing code, docs, or a referenced repo already
   answer it, find the answer there instead of asking.
+- **Ask in chat, never via a tool.** Pose every question as plain text in the
+  conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
+  carry the "idk" / "zoom out" / "visualize it" affordances below, and they pin the
+  user to a menu instead of an open answer.
 
 Besides answering, three responses are **always open** to the user at any question —
 each handled below:

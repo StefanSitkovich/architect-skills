@@ -24,6 +24,10 @@ fuel: the NFRs captured here become the budgets the `implement-plan` gates and
 - **Interview, don't invent.** Requirements are written before everything is
   known. Build them by interviewing the user, not guessing — one question at a
   time, recommend an answer, explore existing code/docs before asking.
+- **Ask in chat, never via a tool.** Pose every question as plain text in the
+  conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
+  carry the "idk" / "zoom out" / "visualize it" affordances, and they pin the user
+  to a menu instead of an open answer.
 - **What & why, not how.** A requirement states a capability and its benefit. The
   moment you're choosing a technology or a schema you've crossed into `design`'s
   territory — stop and note it there.

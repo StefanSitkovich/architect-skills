@@ -20,6 +20,9 @@ description: >-
   roadmap or user stories. Pick the level from the request.
 - **Neither level requires the other.** You can draft user stories even if no
   `plan/roadmap.md` exists; each level stands alone.
+- **Ask in chat, never via a tool.** Pose any clarifying question as plain text in
+  the conversation; don't use the `AskUserQuestion` tool — its fixed options pin the
+  user to a menu instead of an open answer.
 
 ## Levels & output
 
