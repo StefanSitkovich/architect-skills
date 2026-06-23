@@ -6,7 +6,7 @@ description: >-
   capabilities, non-functional requirements (NFRs / quality attributes), success
   metrics, constraints/assumptions, and prioritization. Maintains the
   single-source-of-truth requirements doc by interviewing the user — it doesn't
-  invent. The first content link in the SDLC chain (architect:setup bootstraps the
+  invent. The first content link in the SDLC chain (architect:project-goal bootstraps the
   agent guide and doc index before it); the other SSoT docs (domain, architecture,
   contracts, decisions) are design's job.
 ---
@@ -50,11 +50,12 @@ per-section create / edit / delete rules and **Visualize** defaults in
 | Prioritization              | MoSCoW (Must / Should / Could / Won't) over the capabilities      |
 
 Add the doc to the index in the agent guide (the indexing rule is in `design`; the
-guide itself is established by `architect:setup`).
+guide itself is established by `architect:project-goal`).
 
 ## Workflow
 
-1. **Read first** — any existing requirements doc, the **domain model** doc for
+1. **Read first** — the current goal in the agent guide (it bounds what's in scope
+   for this round), any existing requirements doc, the **domain model** doc for
    terms, the doc index, and a referenced repo/prototype if one exists.
 2. **Interview down the tree** — settle Vision before the capabilities that rest
    on it; capabilities before their NFRs and priorities. One decision at a time,

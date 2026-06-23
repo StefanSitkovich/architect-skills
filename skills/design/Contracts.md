@@ -14,6 +14,28 @@ contract becomes standing** — every feature now depends on it, it is no longer
 stack choice, a boundary, a cross-cutting pattern) and keep the concrete schema
 here. That promotion is the line between this doc and the architecture doc.
 
+## Spec vs. implemented — the `contracts/` handoff
+
+A contract has two layers, and lives in **exactly one** at a time:
+
+- **Spec** (design intent) — a section in this doc, written while the contract is
+  being designed. Prose + a sketched schema, human-reasoned.
+- **Artifact** (reality) — a real file under `contracts/` (a migration `.sql`, an
+  `openapi.yaml`, a `.proto` / `.avsc`, generated types) once the contract is
+  **built**. This is what code and tests actually consume.
+
+**On implementation the contract moves out of this doc** — the artifact is written
+to `contracts/`, the spec section here is **removed**, and a one-line pointer is
+left in its place so existing deep-links still resolve:
+
+    ### Incident tables
+    → implemented: `contracts/incident.sql`
+
+Never keep the schema in both places — the artifact is the source of truth once it
+exists; a stale spec beside it is exactly the duplication this avoids. (The
+implementing agent does the move — see `architect:implement-plan`.) Drift between a
+remaining spec and its artifact is a review finding (`architect:review-code`).
+
 Per header, deltas from the standard workflow in
 [SKILL.md](SKILL.md#workflow-for-every-change) on **create / edit / delete** —
 plus a **Visualize** default for sections worth drawing.

@@ -35,9 +35,10 @@ of re-embedding them.
 
 ## Workflow (every invocation)
 
-1. **Read first** — the SSoT docs relevant to the plan (requirements, domain model,
-   architecture, contracts, entities) and the existing `plan/` file for this level
-   if present.
+1. **Read first** — the current goal in the agent guide (it bounds the scope of
+   what to plan now), the SSoT docs relevant to the plan (requirements, domain
+   model, architecture, contracts, entities), and the existing `plan/` file for
+   this level if present.
 2. **Pick the level** — from the user's intent. Do **only** that level; if they
    ask for both, do one and tell them to invoke again for the other.
 3. **Clarify** — one focused question if the scope is ambiguous.

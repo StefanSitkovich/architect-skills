@@ -11,9 +11,11 @@ contract.
 - The `### Pages` sections of the contracts doc and the prototype / clickdummy
   (see `architect:prototype`) if they exist — they define the intended UI;
   deviate only with a reason you report.
-- API contracts in the contracts doc — code against the **contract**, not against
-  whatever the backend currently exposes. If the backend story isn't merged
-  yet, stub the contract; integration is proven after merge.
+- The contract for your task — read the **artifact** from `contracts/` when it
+  exists (e.g. `openapi.yaml`, generated types), else the **spec** in the contracts
+  doc. Code against the **contract**, not against whatever the backend currently
+  exposes. If the backend story isn't merged yet, stub the contract; integration is
+  proven after merge.
 - The repo's agent guide (`CLAUDE.md`/`AGENTS.md`) and surrounding code — match its
   conventions; UI labels follow the ubiquitous language from the domain model doc.
 
@@ -29,6 +31,10 @@ contract.
 
 ## Working
 
+- **Materialize, don't duplicate.** If you implement a contract the frontend owns
+  (a page contract, a generated client), write the artifact under `contracts/` and
+  **remove its spec section from the contracts doc**, leaving a one-line pointer so
+  links still resolve. Never leave the same contract in both places.
 - Commit small, prefixed with the story ID: `feat(M1-4): …`.
 - Every `Test:` criterion becomes a real automated test asserting that
   criterion (component test or E2E), written **with** the implementation, not

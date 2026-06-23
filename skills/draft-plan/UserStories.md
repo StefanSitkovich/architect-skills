@@ -45,10 +45,12 @@ route / request / response / query params), an event or stream schema, a page, o
 config.
 
 **Prefer linking over embedding.** Technical contracts live in the **contracts**
-doc (maintained by `architect:design`). The story links to the relevant section
-instead of re-embedding it:
+doc as a *spec* while being designed (maintained by `architect:design`), and move
+to a real artifact under `contracts/` once implemented. The story links to the
+contract — the spec section while it's designed, the artifact once it's built (the
+spec leaves a pointer there, so a doc link keeps resolving):
 
-    **Contracts:** docs/Contracts.md#incident-tables, docs/Contracts.md#post-incidents
+    **Contracts:** docs/Contracts.md#incident-tables   (→ contracts/incident.sql once implemented)
 
 **If a contract a story needs doesn't exist yet**, note the gap so it can be
 drafted in the **contracts** doc — don't invent and maintain a parallel copy here.

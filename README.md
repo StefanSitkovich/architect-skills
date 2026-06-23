@@ -1,15 +1,15 @@
 # architect-skills
 
-Skills that mirror the software-development lifecycle, from project setup to code
-review. The chain: **setup → requirements → design → draft-plan →
-prototype → write-e2e-tests → implement-plan → review-code**, with **visualize**
-cross-cutting throughout.
+Skills that mirror the software-development lifecycle, from setting the project
+goal to code review. The chain: **project-goal → requirements → design →
+draft-plan → prototype → write-e2e-tests → implement-plan → review-code**, with
+**visualize** cross-cutting throughout.
 
 ## Skills
 
 | Skill | Use for |
 | --- | --- |
-| `setup` | Bootstrap a repo for the chain — create the agent guide (`AGENTS.md`/`CLAUDE.md`) if none exists, capture the project *goal*, and establish the SSoT *document structure* (the index mapping each doc concept to its file under `docs/`). |
+| `project-goal` | Set the project's *current goal* — the one objective being pursued now — in the root agent guide (`AGENTS.md`/`CLAUDE.md`) so other skills read it as scope orientation. Also bootstraps the guide and the SSoT *document structure* (the index mapping each doc concept to its file under `docs/`) when none exists. |
 | `requirements` | Engineer the *what* & *why* into a single-source-of-truth requirements doc — vision, stakeholders/personas, functional + non-functional requirements (NFR catalog), success metrics, constraints, MoSCoW. |
 | `design` | Maintain the other SSoT docs — architecture, domain model, entities, per-feature technical contracts, and a decision log (ADRs). |
 | `draft-plan` | Plan upcoming work into a `plan/` folder — a roadmap, or user stories that link the docs' contracts. |

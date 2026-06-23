@@ -8,7 +8,9 @@ criteria in the task are your contract.
 ## Read first
 
 - Your task (`TaskGet`) — story, acceptance criteria, linked contract sections.
-- The contracts-doc sections the task links — these are **contracts**
+- The contract for your task — read the **artifact** from `contracts/` if it
+  already exists there (the implemented source of truth), otherwise the linked
+  **spec** sections in the contracts doc. Either way these are **contracts**
   (tables, routes, schemas, config) to implement exactly, not suggestions.
 - The repo's agent guide (`CLAUDE.md`/`AGENTS.md`) and surrounding code — match its
   conventions, naming, and the ubiquitous language from the domain model doc.
@@ -26,6 +28,12 @@ criteria in the task are your contract.
 
 ## Working
 
+- **Materialize the contract, don't duplicate it.** When you implement a contract
+  that was a spec in the contracts doc, write the real artifact under `contracts/`
+  (migration `.sql`, `openapi.yaml`, `.proto` / `.avsc`, generated types) and
+  **remove the spec section from the contracts doc**, leaving a one-line pointer
+  (`→ implemented: contracts/incident.sql`) so existing links still resolve. The
+  artifact is the source of truth once it exists — never leave the schema in both.
 - Commit small, prefixed with the story ID: `feat(M1-2): …`.
 - Every `Test:` criterion becomes a real automated test that asserts that
   criterion — a test that passes without proving the criterion is worse than

@@ -6,7 +6,7 @@ description: >-
   terminology, entity docs, per-feature technical contracts, or a decision log
   (a DDD set or any docs). Requirements have their own skill
   (architect:requirements); this skill treats the requirements doc as read-only
-  input. The agent guide and the doc index are established by architect:setup.
+  input. The agent guide and the doc index are established by architect:project-goal.
 ---
 
 # Single-Source-of-Truth Docs
@@ -30,8 +30,9 @@ per-header create / edit / delete rules.
 
 ## Workflow for every change
 
-1. **Read first** — the target doc, the docs it links to, the doc index in the
-   agent guide, and the doc's guidance file (table below).
+1. **Read first** — the target doc, the docs it links to, the agent guide (the doc
+   index, and the current goal that orients what's in scope), and the doc's
+   guidance file (table below).
 2. **SSoT check** — is this fact already documented? → keep it there and link.
    Where should it live? → the doc whose guidance says it belongs there.
 3. **Make the change** in the doc's existing style and section, following the
@@ -123,7 +124,7 @@ state the full absolute path.
 
 Keep each fact in exactly one doc, keyed by *concept* — what information lives
 where. Each concept resolves to a file via the doc index in the agent guide (the
-**resolution rule**, set by `architect:setup`); the default filenames below are
+**resolution rule**, set by `architect:project-goal`); the default filenames below are
 just the starting point a project may rename. Section names within a doc are
 illustrative — follow the project's language and conventions. Each doc has a
 guidance file with per-header create / edit / delete rules.
@@ -142,14 +143,14 @@ as a project grows — most often one entity doc per major term.
 
 ## Indexing docs in the agent guide
 
-The agent guide (`AGENTS.md` / `CLAUDE.md`, established by `architect:setup`)
+The agent guide (`AGENTS.md` / `CLAUDE.md`, established by `architect:project-goal`)
 **points to** docs, never duplicates their content. Its Document Index is the
 authoritative concept→file map; keep it current as you work:
 
 - Creating a doc → add a row. Renaming/relocating → update the row. Removing →
   remove the row.
-- No index yet? That's `architect:setup`'s job — run it, or create the index
-  table as it specifies (format in [AgentGuide.md](../setup/AgentGuide.md)).
+- No index yet? That's `architect:project-goal`'s job — run it, or create the index
+  table as it specifies (format in [AgentGuide.md](../project-goal/AgentGuide.md)).
 
 ## Creating a new document
 

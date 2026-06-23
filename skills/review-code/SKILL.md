@@ -33,6 +33,8 @@ story branch.
   risk behind it is a remark, not a finding.
 - **Report, don't guess.** Where the docs are silent, flag a doc gap — don't
   invent a standard to enforce.
+- **Mind the current goal.** The goal in the agent guide says what's in scope now;
+  work that drifts well outside it is fair to flag as a scope finding.
 
 ## Input
 
