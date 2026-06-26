@@ -10,7 +10,6 @@ description: >-
   doc concept — requirements, architecture, contracts, domain model, entities,
   decisions — to its file under docs/). Doesn't write the docs themselves.
 ---
-
 # Project Goal
 
 The head of the chain: name the **current goal** — the one objective the project
@@ -61,15 +60,15 @@ Seed the index with these concepts and their default files. A project may rename
 relocate any of them — the index row is what's authoritative; the default is only
 the starting point.
 
-| Concept            | What it holds                                   | Default location          | Owner skill              |
-| ------------------ | ----------------------------------------------- | ------------------------- | ------------------------ |
-| requirements doc   | the *what* & *why* — vision, NFRs, priorities   | `docs/Requirements.md`    | `architect:requirements` |
-| architecture doc   | the durable *how* — context, modules, data flow | `docs/Architecture.md`    | `architect:design`       |
-| contracts doc      | per-feature technical contracts (**spec**)      | `docs/Contracts.md`       | `architect:design`       |
-| contracts artifacts | the **implemented** contracts (real files)     | `contracts/`              | `architect:implement-plan` |
-| domain model doc   | terminology SSoT — actors, terms, glossary      | `docs/DomainModel.md`     | `architect:design`       |
-| entity docs        | one term's structure — keys, status, fields     | `docs/entities/<Term>.md` | `architect:design`       |
-| decision log       | significant settled choices and why (ADRs)      | `docs/Decisions.md`       | `architect:design`       |
+| Concept             | What it holds                                     | Default location            | Owner skill                  |
+| ------------------- | ------------------------------------------------- | --------------------------- | ---------------------------- |
+| requirements doc    | the*what* & *why* — vision, NFRs, priorities | `docs/Requirements.md`    | `architect:requirements`   |
+| architecture doc    | the durable*how* — context, modules, data flow | `docs/Architecture.md`    | `architect:design`         |
+| contracts doc       | per-feature technical contracts (**spec**)  | `docs/Contracts.md`       | `architect:design`         |
+| contracts artifacts | the **implemented** contracts (real files) | `contracts/`              | `architect:implement-plan` |
+| domain model doc    | terminology SSoT — actors, terms, glossary       | `docs/DomainModel.md`     | `architect:design`         |
+| entity docs         | one term's structure — keys, status, fields      | `docs/entities/<Term>.md` | `architect:design`         |
+| decision log        | significant settled choices and why (ADRs)        | `docs/Decisions.md`       | `architect:design`         |
 
 **Resolution rule** — every skill in the chain follows this, and it's stated once
 here: to read or write a doc, look up its concept in the agent guide's index and
