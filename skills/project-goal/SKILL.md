@@ -80,6 +80,12 @@ and add the row. Don't hardcode a filename anywhere else.
 contract never lives in both — on implementation it moves from the doc to
 `contracts/` (see `architect:design`'s contracts guidance and `architect:implement-plan`).
 
+**The index is the fact-registry root.** The durable doc facts carry stable ids —
+`REQ-`/`NFR-` (requirements), `ADR-` (decisions), `ENT-` (entities) — and resolve
+through the docs this index maps. That's how `architect:audit-coherence`,
+`architect:extract`, and `architect:evolve` find a fact from its id and join it to the
+`@realizes` tags in the code.
+
 ## Workflow
 
 1. **Read first** — the existing root `AGENTS.md` / `CLAUDE.md` (its current goal

@@ -82,10 +82,11 @@ later agent) can tell it apart from an oversight:
 
 The mirror of a `TBD`: when a **significant** decision lands — one a future reader
 would ask "why?" about — record it in the **decision log** as an ADR (format in
-[Decisions.md](Decisions.md)), and clear the `TBD` it resolves. Not every choice
-earns one; the log is for decisions worth explaining later, kept lean. Reversing a
-past decision (often where "zoom out" leads) is a *new* ADR that supersedes the old
-— never an edit to the old one.
+[Decisions.md](Decisions.md)), and clear the `TBD` it resolves. **Propose it in chat and
+write it only on the user's explicit sign-off** (straight as `Accepted`) — never
+auto-author one. Not every choice earns one; the log is for decisions worth explaining
+later, kept lean. Reversing a past decision (often where "zoom out" leads) is a *new* ADR
+that supersedes the old — never an edit to the old one.
 
 ### Zooming out — challenge the question, not the answer
 

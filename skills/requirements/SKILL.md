@@ -35,6 +35,10 @@ fuel: the NFRs captured here become the budgets the `implement-plan` gates and
   terms rather than redefining. Same SSoT discipline as `design`.
 - **Surface contradictions, don't paper over them.** Flag gaps and conflicts;
   capture the undecided as `TBD`, don't fill it in.
+- **Stable ids, signed off.** Each Functional Requirement and NFR carries a stable
+  `REQ-NNN` / `NFR-NNN` id, so code can be tagged to it and `audit-coherence` can join
+  the two. Like an ADR, a `REQ`/`NFR` is **proposed in chat and written only on explicit
+  sign-off** — proposed, never generated.
 
 ## The doc
 
@@ -64,8 +68,9 @@ guide itself is established by `architect:project-goal`).
 2. **Interview down the tree** — settle Vision before the capabilities that rest
    on it; capabilities before their NFRs and priorities. One decision at a time,
    resolving dependencies as you go.
-3. **Write** each settled answer into its section, in the project's language,
-   linking domain terms to the **domain model** doc.
+3. **Write** each settled answer into its section on sign-off, in the project's
+   language, linking domain terms to the **domain model** doc; give each Functional
+   Requirement and NFR its stable `REQ-`/`NFR-` id (see [Requirements.md](Requirements.md)).
 4. **Report** — what you captured, plus the open `TBD`s and any contradictions.
 
 ## Interview affordances

@@ -1,9 +1,10 @@
 ---
 name: visualize
 description: >-
-  Generates draw.io (diagrams.net) diagrams as a single multi-page .drawio file
-  in a fresh, timestamped temp folder (never in the repo), validates it, and
-  opens it. Four standard modes, picked from an optional argument or detected
+  Generates draw.io (diagrams.net) or Mermaid diagrams — draw.io as a single
+  multi-page .drawio file in a fresh, timestamped temp folder (never in the repo)
+  that it validates and opens; Mermaid as inline blocks for Markdown / GitHub-native
+  output (e.g. an audit-coherence report). Four standard modes, picked from an optional argument or detected
   from the repo — code (C4 as built, dependency graph, sequence, class/ER from
   the source tree), docs (user journey, stakeholder grid, MoSCoW, NFR tree, DDD
   context map, event storming, C4, ER/API/event contracts, ADR graph from the
@@ -14,11 +15,12 @@ description: >-
   visualize the code, architecture, docs, domain, plan, requirements, decisions,
   traceability/coverage, or anything on the fly, asks for draw.io / diagrams.net
   diagrams, a C4 model, context map, story map, dependency graph, ER/class,
-  sequence, event-storming, ADR/decision, or user-journey diagram, or runs
-  /visualize (optionally /visualize code|docs|plan|trace|<topic>).
+  sequence, event-storming, ADR/decision, or user-journey diagram, asks for a
+  Mermaid diagram, or runs /visualize (optionally /visualize code|docs|plan|trace|<topic>
+  and an optional mermaid format).
 ---
 
-# visualize – draw.io diagrams from code, docs, plan, or ad hoc
+# visualize – draw.io or Mermaid diagrams from code, docs, plan, or ad hoc
 
 ## Principle
 
@@ -27,6 +29,20 @@ Diagrams are **derived views**, not a single source of truth.
 - **Never write into the repo.** No signpost entry (the agent guide), no changelog.
 - Derive fresh from the chosen source each run. On contradictions, **report instead of guessing**.
 - Diagram labels use the project's own language; if the project has a glossary or domain model, apply that ubiquitous language consistently.
+
+## Output format — draw.io or Mermaid
+
+The **mode** picks *what* to draw; the **format** picks *how* to emit it.
+
+- **draw.io** (default) — rich, interactive, multi-page; the right choice for the exploration
+  modes (`code` / `docs` / `plan` / `trace`) and any diagram you'll open and pan around.
+- **Mermaid** — text diagrams that embed inline in Markdown and render natively on GitHub. Use
+  it when the diagram lives *inside* a Markdown artifact (a PR comment, an issue, the
+  `audit-coherence` report) — it's the **default when `trace` is rendered into a coherence
+  report**. Select it with a `mermaid` argument (e.g. `/visualize trace mermaid`).
+
+Mermaid trades richness for portability: reach for it for an at-a-glance graph that travels with
+the text, draw.io for a diagram explored on its own.
 
 ## Picking the mode
 
@@ -48,7 +64,7 @@ For anything that doesn't fit a standard mode:
 
 ## Output & open
 
-Write a self-contained, **multi-page** .drawio file to the OS temp directory so nothing lands in the repo. Resolve the temp dir from `$TMPDIR` (fallback `/tmp`, or `%TEMP%` on Windows); each run gets a fresh path `<tmpdir>/visualize-<mode>-<timestamp>/<project>-<mode>-<timestamp>.drawio`, where `<mode>` is `code`/`docs`/`plan`/`adhoc` and `<project>` is the project name. Validate it as XML after writing (snippet below). Open it for the user — `xdg-open <path>` (Linux), `open <path>` (macOS), `start <path>` (Windows). **Always** end by stating the **full absolute path** to the generated file (so the user can reopen it even if it didn't come to the foreground), along with the assumptions you interpreted.
+For the **draw.io** format (the default), write a self-contained, **multi-page** .drawio file to the OS temp directory so nothing lands in the repo (for **Mermaid**, see *Output format* above and *Mermaid mechanics* below). Resolve the temp dir from `$TMPDIR` (fallback `/tmp`, or `%TEMP%` on Windows); each run gets a fresh path `<tmpdir>/visualize-<mode>-<timestamp>/<project>-<mode>-<timestamp>.drawio`, where `<mode>` is `code`/`docs`/`plan`/`adhoc` and `<project>` is the project name. Validate it as XML after writing (snippet below). Open it for the user — `xdg-open <path>` (Linux), `open <path>` (macOS), `start <path>` (Windows). **Always** end by stating the **full absolute path** to the generated file (so the user can reopen it even if it didn't come to the foreground), along with the assumptions you interpreted.
 
 ## draw.io mechanics
 
@@ -58,6 +74,16 @@ Write a self-contained, **multi-page** .drawio file to the OS temp directory so 
 ```powershell
 Get-ChildItem "$dir\*.drawio" | ForEach-Object { try { [xml]$x=Get-Content $_.FullName -Raw; "OK $($_.Name) cells=$($x.SelectNodes('//mxCell').Count)" } catch { "FAIL $($_.Name): $($_.Exception.Message)" } }
 ```
+
+## Mermaid mechanics
+
+- Emit fenced ` ```mermaid ` blocks — `flowchart`, `sequenceDiagram`, `classDiagram`,
+  `erDiagram`, and `stateDiagram-v2` cover the standard views.
+- **Embedding** (a report / PR comment / issue) → write the block *into* that Markdown.
+  **Standalone** → write a `.md` (or `.mmd`) to the temp dir like the draw.io path, and state
+  the absolute path; there's no separate validate/open step.
+- One diagram per block; labels in the project's language; escape `"` inside node text, and
+  avoid raw `<`/`>` (use `→`).
 
 ## Flag assumptions
 

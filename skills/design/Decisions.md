@@ -11,10 +11,19 @@ log.)*
 
 ## When to record
 
-Record a decision when a future reader would ask **"why was it done this way?"** —
-a chosen technology, a boundary, a pattern, a tradeoff with live alternatives.
-**Not** every micro-choice; the log is for decisions worth explaining, not a diary.
-Keep it lean — one entry per decision.
+**Default to *not* recording.** Most choices don't earn an entry, and the log's
+value collapses as it grows — too many ADRs is the common failure, not too few.
+Record a decision only when a future reader would genuinely **re-litigate** it and
+be worse off reverse-engineering the *why* — a chosen technology, a boundary, a
+pattern, a tradeoff with live alternatives. **Not** every micro-choice; not a diary,
+not a changelog. One lean entry per decision worth explaining.
+
+**Sign-off precedes writing.** A skill never writes an ADR on its own. It
+**proposes** the decision in chat — context, choice, consequences — and only on the
+user's explicit sign-off is it written, straight as `Accepted`. A declined proposal
+writes **nothing**; there is no record of a rejected decision. This binds every
+skill that can touch the log — `design`, and the coherence skills `extract` /
+`evolve` / `audit-coherence` — they propose ADRs, never author them.
 
 ## Entry format
 
@@ -28,9 +37,9 @@ sequentially:
     **Consequences:** <what it makes easy, what it costs, what it rules out>
     **Alternatives:** <what else was weighed, and why not>
 
-- **Create** — append a new ADR; link the docs it touches (the **architecture**
-  and **contracts** docs, the entity). If it settles a `TBD`, clear that `TBD` in
-  the same pass.
+- **Create** — on sign-off, append a new ADR as `Accepted`; link the docs it touches
+  (the **architecture** and **contracts** docs, the entity). If it settles a `TBD`,
+  clear that `TBD` in the same pass.
 - **Edit** — an Accepted ADR is **immutable**; don't rewrite history. New
   information → a *new* ADR that supersedes it.
 - **Delete** — never. To reverse a decision (the "zoom out" outcome), add a new
@@ -39,5 +48,11 @@ sequentially:
 
 ## Status values
 
-`Proposed` → `Accepted` → `Superseded by ADR-NNNN` (or `Deprecated`). A `Proposed`
-ADR pairs with a `TBD` elsewhere; promote both together when the decision lands.
+`Accepted` → `Superseded by ADR-NNNN` (or `Deprecated`).
+
+- A decision **not yet made** lives as a `TBD` (in `design`), not as an on-disk ADR.
+  When it lands and the user signs off, it's written straight as `Accepted`, and the
+  `TBD` is cleared in the same pass.
+- A **reversed** decision becomes a new `Accepted` ADR that supersedes the old; the old
+  flips to `Superseded by ADR-NNNN`. A decision no longer in force but not replaced is
+  `Deprecated`.

@@ -38,15 +38,17 @@ Who has a stake in the product, and the user archetypes who use it.
 
 One heading per capability — what a user can do and why.
 
-- **Create** — add a `### Capability` heading; describe **behaviour**, not UI or
-  tech. Link domain terms to the **domain model** doc, entity detail to the
-  **entity docs**. Tag its **priority** (see Prioritization).
+- **Create** — add a `### REQ-NNN — Capability` heading (a stable id + the capability
+  name; the id is the join key code is tagged against). Describe **behaviour**, not UI
+  or tech. Link domain terms to the **domain model** doc, entity detail to the **entity
+  docs**. Tag its **priority** (see Prioritization).
 - **Delete** — retiring a capability: remove it, then check whether any entity it
-  was the *sole* reason for is now orphaned (→ domain model doc delete).
+  was the *sole* reason for is now orphaned (→ domain model doc delete). Retire the id;
+  don't reuse the number.
 - **Visualize** — User Journey / capability map: the capabilities as steps a user
   walks through.
 
-> ### Record an expense
+> ### REQ-012 — Record an expense
 > The user records an [Expense](DomainModel.md) with an amount, a date and a
 > [Category](DomainModel.md).
 
@@ -57,15 +59,15 @@ These are the numbers the downstream Performance / Security / Compliance lenses
 check against, so state them as concretely as the project allows.
 
 - **Create** — group by attribute (performance, scalability, availability,
-  security, privacy, accessibility, operability, …). Each entry: the attribute, a
-  **measurable** target where possible, and the capability/scope it applies to. A
-  target with no number is a `TBD`, not a vague adjective.
+  security, privacy, accessibility, operability, …). Lead each entry with a stable
+  `NFR-NNN` id, then the attribute, a **measurable** target where possible, and the
+  capability/scope it applies to. A target with no number is a `TBD`, not a vague adjective.
 - **Edit** — tightening or loosening a budget ripples to the plan and the gates;
   note why it changed.
 - **Visualize** — quality-attribute tree: attributes and their targets.
 
-> - **Performance** — the monthly summary loads in < 500 ms for up to 10k expenses.
-> - **Privacy** — expense data is personal; never shared with third parties (see
+> - **NFR-001 · Performance** — the monthly summary loads in < 500 ms for up to 10k expenses.
+> - **NFR-002 · Privacy** — expense data is personal; never shared with third parties (see
 >   [Architecture](Architecture.md) for the data classification).
 
 ## Success Metrics

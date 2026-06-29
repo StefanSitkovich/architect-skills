@@ -6,7 +6,7 @@
     {
       "name": "architect",
       "source": "./",
-      "description": "An SDLC skill chain: project goal, requirements, docs, plans, prototypes, draw.io diagrams, E2E tests, plan implementation with agent teams, and code review."
+      "description": "An SDLC skill chain plus a docs<->code coherence lattice: project goal, requirements, docs, plans, prototypes, draw.io/Mermaid diagrams, E2E tests, plan implementation with agent teams, and code review — plus extract/audit-coherence/evolve for keeping docs and code in step, and a standalone daily-digest repo-overview helper for standups."
     }
   ]
 }

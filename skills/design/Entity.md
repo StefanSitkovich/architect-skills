@@ -26,6 +26,23 @@ Creating one → also add the index row in the agent guide.
 > Detailed structure of the **Expense** entity. The term is defined once in the
 > [Domain Model](../DomainModel.md); this document only elaborates its structure.
 
+## Realizing code (refer-back)
+
+The entity carries a stable id, `ENT-<Term>` (e.g. `ENT-Expense`), and a **refer-back**
+link to the class/type that realizes it.
+
+- **Create** — once the entity exists in code, add a one-line link to its realizing symbol
+  (`path:symbol`); the class may also carry `// @realizes ENT-<Term>`. Until then, leave it
+  as a `TBD` — a planned gap.
+- **Edit** — if the class moves or is renamed, update the link.
+
+The link is what `audit-coherence` checks — that it still **resolves** (else a broken-link /
+stale-anchor / orphan finding). It does **not** diff the fields: **the class owns the
+structure**, so keys/status/fields below are durable domain narrative, not a spec the code
+must match line-for-line.
+
+> Realized by [`Expense`](../../src/Expenses/Expense.cs) — `// @realizes ENT-Expense`.
+
 ## Key(s)
 
 The natural identifier(s).
