@@ -20,9 +20,8 @@ Every story has a fixed opener and a fixed closing section. Optional sections go
     - …
 
 Rules:
-- **"As a", "I want", "so that" are always on separate lines**, in that order, at the top of every story — no exceptions.
+- **"As a", "I want", "so that" are always on separate lines**, in that order.
 - One role, one goal, one benefit per story.
-- Link to related docs or domain entities where relevant.
 
 ### Acceptance Criteria rules
 
@@ -44,16 +43,19 @@ A story may touch technical contracts: a database table, a data contract (API
 route / request / response / query params), an event or stream schema, a page, or
 config.
 
-**Prefer linking over embedding.** Technical contracts live in `Contracts.md`
-(maintained by `architect:design`). The story links to the relevant section
-instead of re-embedding it:
+**Prefer linking over embedding.** Technical contracts live in the **contracts**
+doc as a *spec* while being designed (maintained by `architect:design`), and move
+to a real artifact under `contracts/` once implemented. The story links to the
+contract — the spec section while it's designed, the artifact once it's built (the
+spec leaves a pointer there, so a doc link keeps resolving):
 
-    **Contracts:** docs/Contracts.md#incident-tables, docs/Contracts.md#post-incidents
+    **Contracts:** docs/Contracts.md#incident-tables   (→ contracts/incident.sql once implemented)
 
 **If a contract a story needs doesn't exist yet**, note the gap so it can be
-drafted in `Contracts.md` — don't invent and maintain a parallel copy here. A short
-inline sketch is acceptable only as a temporary placeholder, in the same formats
-`design` uses, to be promoted into `Contracts.md`. Never maintain both.
+drafted in the **contracts** doc — don't invent and maintain a parallel copy here.
+A short inline sketch is acceptable only as a temporary placeholder, in the same
+formats `design` uses, to be promoted into the **contracts** doc. Never maintain
+both.
 
 ## IDs
 

@@ -5,35 +5,43 @@ description: >-
   requirements — the what & why: vision, stakeholders/personas, functional
   capabilities, non-functional requirements (NFRs / quality attributes), success
   metrics, constraints/assumptions, and prioritization. Maintains the
-  single-source-of-truth Requirements.md by interviewing the user — it doesn't
-  invent. The first link in the SDLC chain; the other SSoT docs (domain,
-  architecture, contracts, decisions) are design's job.
+  single-source-of-truth requirements doc by interviewing the user — it doesn't
+  invent. The first content link in the SDLC chain (architect:project-goal bootstraps the
+  agent guide and doc index before it); the other SSoT docs (domain, architecture,
+  contracts, decisions) are design's job.
 ---
 
 # Requirements Engineering
 
 The front of the chain: turn a fuzzy idea into a clear, single-source-of-truth
-`Requirements.md` — the **what** and **why**, never the **how** (that's
-`Architecture.md` / `Contracts.md`, via `design`). Requirements are downstream
-fuel: the NFRs captured here become the budgets the `implement-plan` gates and
-`review-code` check against, so capture them deliberately, not as an afterthought.
+**requirements doc** — the **what** and **why**, never the **how** (that's the
+**architecture** / **contracts** docs, via `design`). The NFRs captured here become
+the budgets the `implement-plan` gates and `review-code` check against.
 
 ## Principles
 
 - **Interview, don't invent.** Requirements are written before everything is
   known. Build them by interviewing the user, not guessing — one question at a
   time, recommend an answer, explore existing code/docs before asking.
+- **Ask in chat, never via a tool.** Pose every question as plain text in the
+  conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
+  carry the "idk" / "zoom out" / "visualize it" affordances.
 - **What & why, not how.** A requirement states a capability and its benefit. The
   moment you're choosing a technology or a schema you've crossed into `design`'s
   territory — stop and note it there.
-- **Single source of truth.** Each fact once; link to `DomainModel.md` for terms
-  rather than redefining. Same SSoT discipline as `design`.
+- **Single source of truth.** Each fact once; link to the **domain model** doc for
+  terms rather than redefining.
 - **Surface contradictions, don't paper over them.** Flag gaps and conflicts;
   capture the undecided as `TBD`, don't fill it in.
+- **Stable ids, signed off.** Each Functional Requirement and NFR carries a stable
+  `REQ-NNN` / `NFR-NNN` id, so code can be tagged to it and `audit-coherence` can join
+  the two. Like an ADR, a `REQ`/`NFR` is **proposed in chat and written only on explicit
+  sign-off** — proposed, never generated.
 
 ## The doc
 
-Everything lives in one `Requirements.md`, a section per concern. Follow the
+Everything lives in one **requirements doc** (default `docs/Requirements.md`,
+resolved via the agent guide index), a section per concern. Follow the
 per-section create / edit / delete rules and **Visualize** defaults in
 **[Requirements.md](Requirements.md)**:
 
@@ -47,18 +55,20 @@ per-section create / edit / delete rules and **Visualize** defaults in
 | Constraints & Assumptions   | fixed boundaries, and the assumptions the plan rests on           |
 | Prioritization              | MoSCoW (Must / Should / Could / Won't) over the capabilities      |
 
-Add the doc to the index in `AGENTS.md` / `CLAUDE.md` (the indexing rule is in
-`design`).
+Add the doc to the index in the agent guide (the indexing rule is in `design`; the
+guide itself is established by `architect:project-goal`).
 
 ## Workflow
 
-1. **Read first** — any existing `Requirements.md`, the `DomainModel.md` for
+1. **Read first** — the current goal in the agent guide (it bounds what's in scope
+   for this round), any existing requirements doc, the **domain model** doc for
    terms, the doc index, and a referenced repo/prototype if one exists.
 2. **Interview down the tree** — settle Vision before the capabilities that rest
    on it; capabilities before their NFRs and priorities. One decision at a time,
    resolving dependencies as you go.
-3. **Write** each settled answer into its section, in the project's language,
-   linking domain terms to `DomainModel.md`.
+3. **Write** each settled answer into its section on sign-off, in the project's
+   language, linking domain terms to the **domain model** doc; give each Functional
+   Requirement and NFR its stable `REQ-`/`NFR-` id (see [Requirements.md](Requirements.md)).
 4. **Report** — what you captured, plus the open `TBD`s and any contradictions.
 
 ## Interview affordances
@@ -76,5 +86,4 @@ Besides answering, three responses are always open at any question:
   never the repo); then re-pose the question.
 
 When a **significant** requirements decision lands (a scoping call, a priority
-tradeoff), record it as an ADR in `Decisions.md` (via `design`) — the same
-record-the-why discipline, on the what/why side.
+tradeoff), record it as an ADR in the **decision log** (via `design`).

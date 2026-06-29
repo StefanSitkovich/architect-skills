@@ -5,7 +5,8 @@ description: >-
   single-source-of-truth project documentation — architecture, domain model /
   terminology, entity docs, per-feature technical contracts, or a decision log
   (a DDD set or any docs). Requirements have their own skill
-  (architect:requirements); this skill treats Requirements.md as read-only input.
+  (architect:requirements); this skill treats the requirements doc as read-only
+  input. The agent guide and the doc index are established by architect:project-goal.
 ---
 
 # Single-Source-of-Truth Docs
@@ -29,8 +30,9 @@ per-header create / edit / delete rules.
 
 ## Workflow for every change
 
-1. **Read first** — the target doc, the docs it links to, the doc index in
-   `AGENTS.md` / `CLAUDE.md`, and the doc's guidance file (table below).
+1. **Read first** — the target doc, the docs it links to, the agent guide (the doc
+   index, and the current goal that orients what's in scope), and the doc's
+   guidance file (table below).
 2. **SSoT check** — is this fact already documented? → keep it there and link.
    Where should it live? → the doc whose guidance says it belongs there.
 3. **Make the change** in the doc's existing style and section, following the
@@ -39,10 +41,8 @@ per-header create / edit / delete rules.
 
 ## Drafting: interview, don't invent
 
-Docs are often written before everything is known — that's normal. Build them by
-interviewing the user relentlessly through the open questions, not by guessing. Walk
-down each branch of the decision tree, resolving dependencies between decisions, until
-you reach a shared understanding:
+Build docs by interviewing the user through the open questions, not by guessing. Walk
+down each branch of the decision tree, resolving dependencies between decisions:
 
 - **One question at a time.** Settle a decision before the ones that depend on it;
   don't batch questions.
@@ -50,6 +50,9 @@ you reach a shared understanding:
   confirms or corrects rather than starting from blank.
 - **Explore before asking.** If existing code, docs, or a referenced repo already
   answer it, find the answer there instead of asking.
+- **Ask in chat, never via a tool.** Pose every question as plain text in the
+  conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
+  carry the "idk" / "zoom out" / "visualize it" affordances below.
 
 Besides answering, three responses are **always open** to the user at any question —
 each handled below:
@@ -75,24 +78,23 @@ later agent) can tell it apart from an oversight:
 ### Recording a settled decision — ADR
 
 The mirror of a `TBD`: when a **significant** decision lands — one a future reader
-would ask "why?" about — record it in `Decisions.md` as an ADR (format in
-[Decisions.md](Decisions.md)), and clear the `TBD` it resolves. Not every choice
-earns one; the log is for decisions worth explaining later, kept lean. Reversing a
-past decision (often where "zoom out" leads) is a *new* ADR that supersedes the old
-— never an edit to the old one.
+would ask "why?" about — record it in the **decision log** as an ADR (format in
+[Decisions.md](Decisions.md)), and clear the `TBD` it resolves. **Propose it in chat and
+write it only on the user's explicit sign-off** (straight as `Accepted`) — never
+auto-author one. Not every choice earns one; the log is for decisions worth explaining
+later, kept lean. Reversing a past decision (often where "zoom out" leads) is a *new* ADR
+that supersedes the old — never an edit to the old one.
 
 ### Zooming out — challenge the question, not the answer
 
-When the user zooms out — however they phrase it ("zoom out", "wrong question", "I
-think I got that one wrong") — the question was off, or an earlier answer no longer
+When the user zooms out — the question was off, or an earlier answer no longer
 holds. Don't press for an answer. Instead:
 
 - **Stop drilling.** Surface the assumptions the question rested on; name them so a
   wrong one becomes visible.
 - **Go up a level** to the decision those assumptions came from, and re-open it.
-- **Offer a pause.** End the response with a low-key suggestion to break and resume
-  later; work-in-progress is safe (settled facts are in the docs, open ones are
-  `TBD`s). Offer once; never nag.
+- **Offer a pause.** Offer to break and resume later; work-in-progress is safe
+  (settled facts are in the docs, open ones are `TBD`s).
 
 ### Visualizing a decision — draw it, then re-ask
 
@@ -113,49 +115,45 @@ compare. A line or two in chat rarely carries it; produce a real **draw.io** fil
 - **Never in the repo.** Temp folder only, no index row, no changelog — same rule as the
   `visualize` skill.
 
-**Mechanics** — write a self-contained `.drawio` to the OS temp dir (never the repo) at a fresh timestamped path (`$TMPDIR`, or
-`%TEMP%` on Windows → `…/design-viz/<topic>-<timestamp>.drawio`); put the
-options side by side; validate it as XML; open it (`start` / `open` / `xdg-open`); then
-state the full absolute path.
+**Mechanics** — write a self-contained `.drawio` to a fresh timestamped path in
+the OS temp dir (never the repo); put the options side by side; validate it as
+XML; open it; then state the full absolute path.
 
 ## What lives in which doc
 
-Keep each fact in exactly one doc. Section names are illustrative — follow the
-project's language and conventions; the point is *what information lives where*.
-Each doc has a guidance file with per-header create / edit / delete rules.
+Keep each fact in exactly one doc, keyed by *concept* — what information lives
+where. Each concept resolves to a file via the doc index in the agent guide (the
+**resolution rule**, set by `architect:project-goal`); the default filenames below are
+just the starting point a project may rename. Section names within a doc are
+illustrative — follow the project's language and conventions. Each doc has a
+guidance file with per-header create / edit / delete rules.
 
-| Doc                   | Holds                                                                                       | Guidance                       |
-| --------------------- | ------------------------------------------------------------------------------------------- | ------------------------------ |
-| `Architecture.md`     | the durable *how* — context, modules, tech stack, data flow                                 | [Architecture.md](Architecture.md) |
-| `Contracts.md`        | per-feature technical contracts — tables, APIs, event schemas, pages, config                | [Contracts.md](Contracts.md)   |
-| `DomainModel.md`      | terminology SSoT — actors, core domain, relationships, bounded contexts, rules, glossary    | [DomainModel.md](DomainModel.md)   |
-| `entities/<Term>.md`  | one entity's structure — keys, status, fields                                               | [Entity.md](Entity.md)             |
-| `Decisions.md`        | the decision log — significant settled choices and why (ADRs)                               | [Decisions.md](Decisions.md)   |
+| Concept            | Holds                                                                                       | Default file           | Guidance                       |
+| ------------------ | ------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------ |
+| architecture doc   | the durable *how* — context, modules, tech stack, data flow                                 | `docs/Architecture.md` | [Architecture.md](Architecture.md) |
+| contracts doc      | per-feature technical contracts — tables, APIs, event schemas, pages, config                | `docs/Contracts.md`    | [Contracts.md](Contracts.md)   |
+| domain model doc   | terminology SSoT — actors, core domain, relationships, bounded contexts, rules, glossary    | `docs/DomainModel.md`  | [DomainModel.md](DomainModel.md)   |
+| entity docs        | one entity's structure — keys, status, fields                                               | `docs/entities/<Term>.md` | [Entity.md](Entity.md)             |
+| decision log       | significant settled choices and why (ADRs)                                                  | `docs/Decisions.md`    | [Decisions.md](Decisions.md)   |
 
-`Requirements.md` (the *what* & *why*) is maintained by **`architect:requirements`**;
-here it's read-only input you link to. Add more docs as a project grows — most often
-one entity doc per major term.
+The **requirements doc** (the *what* & *why*) is maintained by
+**`architect:requirements`**; here it's read-only input you link to. Add more docs
+as a project grows — most often one entity doc per major term.
 
-## Indexing docs in AGENTS.md / CLAUDE.md
+## Indexing docs in the agent guide
 
-The agent guide should **point to** docs, never duplicate their content. Keep a
-single index table there linking every SSoT doc with a one-line summary:
+The agent guide (`AGENTS.md` / `CLAUDE.md`, established by `architect:project-goal`)
+**points to** docs, never duplicates their content. Its Document Index is the
+authoritative concept→file map; keep it current as you work:
 
-```md
-| Topic              | Document                                     |
-| ------------------ | -------------------------------------------- |
-| Vision & reqs      | [docs/Requirements.md](docs/Requirements.md) |
-| Context & data flow| [docs/Architecture.md](docs/Architecture.md) |
-| Contracts          | [docs/Contracts.md](docs/Contracts.md)       |
-| Terminology/domain | [docs/DomainModel.md](docs/DomainModel.md)   |
-| Decisions (ADRs)   | [docs/Decisions.md](docs/Decisions.md)       |
-```
-
-- Creating a doc → add a row. Renaming/removing → update/remove the row.
-- No index yet? Create one.
+- Creating a doc → add a row. Renaming/relocating → update the row. Removing →
+  remove the row.
+- No index yet? That's `architect:project-goal`'s job — run it, or create the index
+  table as it specifies (format in [AgentGuide.md](../project-goal/AgentGuide.md)).
 
 ## Creating a new document
 
-1. Create it in the docs location, in the project's language and style; link to
-   existing facts instead of restating them. Follow its guidance file (table above).
-2. Add it to the index in `AGENTS.md` / `CLAUDE.md`.
+1. Resolve where it goes from the doc index (or the default above); create it in
+   the project's language and style, linking to existing facts instead of
+   restating them. Follow its guidance file (table above).
+2. Add it to the index in the agent guide.

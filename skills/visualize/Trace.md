@@ -23,12 +23,17 @@ doc index, matching on content, not a fixed filename:
 - the plan / backlog — stories or work items and the contracts they reference.
 - the test suite — e2e / BDD / acceptance scenarios (the right edge).
 - optionally the implementation, when a story→code link is checkable.
+- the **coherence report** (from `audit-coherence`), when present — drift / gap / orphan
+  findings already joined by hard id, ready to render.
 
 ## The chain
 
 **Requirement → Decision → Contract → Story → (code) → Test**, plus the
-side-edge **quality attribute → enforcing check / test**. Links are matched by
-shared language and explicit references — rarely by hard IDs.
+side-edge **quality attribute → enforcing check / test**. Where the **coherence
+extension** is in place, the durable facts (`REQ`/`NFR`/`ADR`/`ENT`) join by **hard id**
+wherever doc anchors and `@realizes` tags exist (deterministic); fall back to
+shared-language / reference matching only where a tag is missing — and flag those as the
+fuzzy edges.
 
 ## Views
 
@@ -48,6 +53,11 @@ and the orphan report are the always-on payoff pages.
 5. **Orphan report** – one summary page collecting every gap found: requirements
    with no story, contracts with no test, stories with no acceptance test,
    decisions never reflected in a contract, quality attributes with no check.
+6. **Coherence overlay** – when an `audit-coherence` report exists, render its findings on
+   the spine: drift / gap / orphan / broken-link / stale-anchor, colored by confidence
+   (deterministic vs advisory). Consume the report's finding-records directly so the trace
+   view and the audit agree. Render as **Mermaid** when embedding it into that report (see
+   [SKILL.md](SKILL.md) — *Output format*).
 
 ## Assumptions to flag
 

@@ -84,6 +84,9 @@ folder convention if it has one).
 3. Missing business action → add it to a facade, composed from system access.
    Missing technical capability → add a system-access wrapper. Never inline
    either into the test.
+4. **Link it to its requirement** — name the scenario for the `REQ`/`NFR` it covers
+   (e.g. `RecordExpense_REQ012`) or tag it `@realizes REQ-012`. A passing, id-linked
+   scenario is that requirement's deterministic **coherence proof** for `audit-coherence`.
 
 ### Setup
 

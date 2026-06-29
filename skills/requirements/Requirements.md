@@ -1,9 +1,10 @@
 # Requirements.md — guidance
 
-Guidance for maintaining a project's `Requirements.md` — the *what* and *why*. Not
-the *how* (→ `Architecture.md` / `Contracts.md`), and not acceptance criteria /
-milestones / story breakdowns (→ the plan). *(Meta-guidance for the skill, not an
-actual requirements doc.)*
+Guidance for maintaining the **requirements doc** (default `docs/Requirements.md`,
+resolved via the agent guide index) — the *what* and *why*. Not the *how* (→ the
+**architecture** / **contracts** docs), and not acceptance criteria / milestones /
+story breakdowns (→ the plan). *(Meta-guidance for the skill, not an actual
+requirements doc.)*
 
 Per header, deltas from the workflow in [SKILL.md](SKILL.md#workflow) on **create /
 edit / delete** — plus a **Visualize** default for sections worth drawing.
@@ -23,8 +24,8 @@ Who has a stake in the product, and the user archetypes who use it.
 
 - **Create** — `**Name** — their stake / what they need from the system`. Mark
   *users* (personas with goals) vs *non-user stakeholders* (sponsor, ops,
-  compliance). A persona maps to an Actor in `DomainModel.md` — link, don't
-  redefine.
+  compliance). A persona maps to an Actor in the **domain model** doc — link,
+  don't redefine.
 - **Delete** — when a stakeholder no longer has a stake; check no requirement is
   justified solely by them.
 - **Visualize** — Stakeholder map / persona cards: who surrounds the system and
@@ -37,15 +38,17 @@ Who has a stake in the product, and the user archetypes who use it.
 
 One heading per capability — what a user can do and why.
 
-- **Create** — add a `### Capability` heading; describe **behaviour**, not UI or
-  tech. Link domain terms to `DomainModel.md`, entity detail to `entities/`. Tag
-  its **priority** (see Prioritization).
+- **Create** — add a `### REQ-NNN — Capability` heading (a stable id + the capability
+  name; the id is the join key code is tagged against). Describe **behaviour**, not UI
+  or tech. Link domain terms to the **domain model** doc, entity detail to the **entity
+  docs**. Tag its **priority** (see Prioritization).
 - **Delete** — retiring a capability: remove it, then check whether any entity it
-  was the *sole* reason for is now orphaned (→ `DomainModel.md` delete).
+  was the *sole* reason for is now orphaned (→ domain model doc delete). Retire the id;
+  don't reuse the number.
 - **Visualize** — User Journey / capability map: the capabilities as steps a user
   walks through.
 
-> ### Record an expense
+> ### REQ-012 — Record an expense
 > The user records an [Expense](DomainModel.md) with an amount, a date and a
 > [Category](DomainModel.md).
 
@@ -56,15 +59,15 @@ These are the numbers the downstream Performance / Security / Compliance lenses
 check against, so state them as concretely as the project allows.
 
 - **Create** — group by attribute (performance, scalability, availability,
-  security, privacy, accessibility, operability, …). Each entry: the attribute, a
-  **measurable** target where possible, and the capability/scope it applies to. A
-  target with no number is a `TBD`, not a vague adjective.
+  security, privacy, accessibility, operability, …). Lead each entry with a stable
+  `NFR-NNN` id, then the attribute, a **measurable** target where possible, and the
+  capability/scope it applies to. A target with no number is a `TBD`, not a vague adjective.
 - **Edit** — tightening or loosening a budget ripples to the plan and the gates;
   note why it changed.
 - **Visualize** — quality-attribute tree: attributes and their targets.
 
-> - **Performance** — the monthly summary loads in < 500 ms for up to 10k expenses.
-> - **Privacy** — expense data is personal; never shared with third parties (see
+> - **NFR-001 · Performance** — the monthly summary loads in < 500 ms for up to 10k expenses.
+> - **NFR-002 · Privacy** — expense data is personal; never shared with third parties (see
 >   [Architecture](Architecture.md) for the data classification).
 
 ## Success Metrics
@@ -100,7 +103,7 @@ MoSCoW across the capabilities, so scope can flex against constraints.
   (this release). Keep "Won't" visible — recording what's *out* prevents
   re-litigation.
 - **Edit** — a re-prioritization is a real decision; if significant, record it as
-  an ADR (`Decisions.md`, via `design`).
+  an ADR (the **decision log**, via `design`).
 - **Visualize** — MoSCoW board: capabilities bucketed by priority.
 
 > - **Must** — Record an expense · **Should** — Monthly budget alerts · **Won't**

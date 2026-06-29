@@ -18,10 +18,9 @@ the change and the spec before judging.
 by its prefix:
 
 - **`Test:`** — find the test. **Read it**: does it assert this criterion, with
-  meaningful inputs? A green test that doesn't prove the criterion is a FAIL —
-  the failure mode you exist to catch. An assertion that is vacuous (always
-  true, or asserting the setup instead of the behavior) fails. Then run it and
-  confirm it passes.
+  meaningful inputs? A green test that doesn't prove the criterion is a FAIL. An
+  assertion that is vacuous (always true, or asserting the setup instead of the
+  behavior) fails. Then run it and confirm it passes.
 - **`CI:`** — run the stated command; PASS only on success.
 - **`Check:`** — perform the inspection yourself (read the output, the log, the
   config; run the app if that's what it takes). The author's word that they

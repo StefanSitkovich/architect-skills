@@ -1,8 +1,9 @@
 # Architecture.md — guidance
 
-Guidance for maintaining a project's `Architecture.md` — the *how*. Term meanings live
-in `DomainModel.md`; capabilities live in `Requirements.md` — link, don't restate.
-*(Meta-guidance for the skill, not an actual architecture doc.)*
+Guidance for maintaining the **architecture doc** (default `docs/Architecture.md`,
+resolved via the agent guide index) — the *how*. Term meanings live in the
+**domain model** doc; capabilities live in the **requirements** doc — link, don't
+restate. *(Meta-guidance for the skill, not an actual architecture doc.)*
 
 Per header, deltas from the standard workflow in
 [SKILL.md](SKILL.md#workflow-for-every-change) on **create / edit / delete** — plus a
@@ -13,7 +14,7 @@ Per header, deltas from the standard workflow in
 External systems the app interacts with, plus the app itself.
 
 - **Create** — the system + what it does / what data it owns. An external system that
-  *owns* domain data is usually also a **Bounded Context** (`DomainModel.md`).
+  *owns* domain data is usually also a **Bounded Context** (the domain model doc).
 - **Delete** — removing an integration: also drop its Data Flow steps and any Module
   that existed only for it.
 - **Visualize** — C4 L1 – System Context: the app and the external systems around it.
@@ -45,7 +46,7 @@ Chosen technologies per concern.
 
 The end-to-end flows, step by step.
 
-- **Create** — ordered steps; link entities/terms to `DomainModel.md`.
+- **Create** — ordered steps; link entities/terms to the domain model doc.
 - **Edit** — a new entity often adds a persistence step here; a new integration adds a
   hop.
 - **Visualize** — Sequence diagram: the ordered steps as messages between modules.

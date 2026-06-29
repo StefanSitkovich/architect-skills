@@ -6,7 +6,7 @@ from each), and the rest is thrown away. Use when **an app already exists** to h
 the variants; greenfield with no app yet → [ClickDummy](ClickDummy.md).
 
 A variant set is far easier to judge **butting up against the real app** — real
-header, real data, real density — than floating on an empty route. Prefer mounting
+header and data — than floating on an empty route. Prefer mounting
 the variants inside the existing page they belong to; only create a throwaway route
 when the thing genuinely has no home yet (name it so it's obviously a prototype,
 following the project's routing convention).
@@ -16,7 +16,7 @@ following the project's routing convention).
 1. **State the question and pick N** — default **3** variants; cap at 5 (more stops
    being radically different). Write the plan in one line.
 2. **Generate structurally different variants** — different layout, information
-   hierarchy, primary affordance — not just different colours (that's wallpaper).
+   hierarchy, primary affordance — not just different colours.
    Hold each to the page's purpose, its real data, and the project's component /
    styling system. Clear component names (`VariantA`, …).
 3. **Wire them on one route** — a switcher renders the variant from a `?variant=`
