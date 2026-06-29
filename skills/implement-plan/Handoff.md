@@ -1,10 +1,9 @@
 # Handoff
 
-Reference for `implement-plan` context management. Contexts that grow past
-~200k tokens get slow, expensive, and forgetful — nobody on the team works in
-one. The cure is cheap because state lives **outside** the context: the team
-task list persists on disk (`~/.claude/tasks/<team>/`), git holds the work,
-and the state file holds everything else.
+Reference for `implement-plan` context management. Past ~200k tokens, contexts
+degrade — so state lives **outside** the context: the team task list persists
+on disk (`~/.claude/tasks/<team>/`), git holds the work, and the state file
+holds everything else.
 
 ## The state file — `plan/implementation-state.md`
 

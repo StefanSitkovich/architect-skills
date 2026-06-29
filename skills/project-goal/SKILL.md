@@ -42,9 +42,6 @@ contracts, domain model, entities, and the decision log are `architect:design`'s
   product is *for*, enduring. The current goal is what's being pursued *now* — and
   when a roadmap exists, it usually *is* the active milestone's objective. Point at
   that milestone rather than restating it.
-- **Detect, don't clobber.** If a root agent guide already exists, never overwrite
-  it — read it, update the goal, and only add what's missing (a goal, an index, or
-  rows for docs not yet listed). Create a file only when none exists.
 - **Root guide, `docs/` for the rest.** The agent guide lives at the repo root so
   it auto-loads; the SSoT docs live under `docs/`. The guide points into `docs/`,
   it doesn't hold the content.
@@ -108,8 +105,7 @@ through the docs this index maps. That's how `architect:audit-coherence`,
 
 **Ask in chat, never via a tool.** Pose every question as plain text in the
 conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
-carry the "idk" / "zoom out" / "visualize it" affordances below, and they pin the
-user to a menu instead of an open answer.
+carry the "idk" / "zoom out" / "visualize it" affordances below.
 
 Besides answering, three responses are always open at any question:
 

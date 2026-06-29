@@ -20,9 +20,8 @@ Every story has a fixed opener and a fixed closing section. Optional sections go
     - …
 
 Rules:
-- **"As a", "I want", "so that" are always on separate lines**, in that order, at the top of every story — no exceptions.
+- **"As a", "I want", "so that" are always on separate lines**, in that order.
 - One role, one goal, one benefit per story.
-- Link to related docs or domain entities where relevant.
 
 ### Acceptance Criteria rules
 

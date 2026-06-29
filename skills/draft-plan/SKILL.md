@@ -21,8 +21,7 @@ description: >-
 - **Neither level requires the other.** You can draft user stories even if no
   `plan/roadmap.md` exists; each level stands alone.
 - **Ask in chat, never via a tool.** Pose any clarifying question as plain text in
-  the conversation; don't use the `AskUserQuestion` tool — its fixed options pin the
-  user to a menu instead of an open answer.
+  the conversation; don't use the `AskUserQuestion` tool.
 
 ## Levels & output
 
@@ -49,9 +48,6 @@ of re-embedding them.
 5. **Report** — summarize what you drafted; surface gaps or contradictions you
    found against the docs.
 
-The Roadmap level is drafted straight from its reference file
-([Roadmap.md](Roadmap.md)). The User Stories level has extra steps:
-
 ## User Stories level → `plan/user-stories.md`
 
 Follow the full story format in **[UserStories.md](UserStories.md)** (story opener,
@@ -75,5 +71,3 @@ unvalidated UI or a technical unknown, offer to prototype it first with
 - Match the documentation language of the project.
 - Use terms already defined in the project's **domain model** doc / glossary —
   don't introduce synonyms.
-- Code identifiers (table names, field names, modules) follow the project's code
-  conventions.

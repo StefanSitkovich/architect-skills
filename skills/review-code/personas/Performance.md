@@ -31,8 +31,7 @@ number.
 ## Boundaries
 
 You change nothing. Micro-optimizations without a budget or a measurable risk
-are not findings — premature optimization rejected here matters as much as real
-risk caught.
+are not findings.
 
 ## Verdict
 

@@ -41,10 +41,8 @@ per-header create / edit / delete rules.
 
 ## Drafting: interview, don't invent
 
-Docs are often written before everything is known — that's normal. Build them by
-interviewing the user relentlessly through the open questions, not by guessing. Walk
-down each branch of the decision tree, resolving dependencies between decisions, until
-you reach a shared understanding:
+Build docs by interviewing the user through the open questions, not by guessing. Walk
+down each branch of the decision tree, resolving dependencies between decisions:
 
 - **One question at a time.** Settle a decision before the ones that depend on it;
   don't batch questions.
@@ -54,8 +52,7 @@ you reach a shared understanding:
   answer it, find the answer there instead of asking.
 - **Ask in chat, never via a tool.** Pose every question as plain text in the
   conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
-  carry the "idk" / "zoom out" / "visualize it" affordances below, and they pin the
-  user to a menu instead of an open answer.
+  carry the "idk" / "zoom out" / "visualize it" affordances below.
 
 Besides answering, three responses are **always open** to the user at any question —
 each handled below:
@@ -90,16 +87,14 @@ that supersedes the old — never an edit to the old one.
 
 ### Zooming out — challenge the question, not the answer
 
-When the user zooms out — however they phrase it ("zoom out", "wrong question", "I
-think I got that one wrong") — the question was off, or an earlier answer no longer
+When the user zooms out — the question was off, or an earlier answer no longer
 holds. Don't press for an answer. Instead:
 
 - **Stop drilling.** Surface the assumptions the question rested on; name them so a
   wrong one becomes visible.
 - **Go up a level** to the decision those assumptions came from, and re-open it.
-- **Offer a pause.** End the response with a low-key suggestion to break and resume
-  later; work-in-progress is safe (settled facts are in the docs, open ones are
-  `TBD`s). Offer once; never nag.
+- **Offer a pause.** Offer to break and resume later; work-in-progress is safe
+  (settled facts are in the docs, open ones are `TBD`s).
 
 ### Visualizing a decision — draw it, then re-ask
 
@@ -120,10 +115,9 @@ compare. A line or two in chat rarely carries it; produce a real **draw.io** fil
 - **Never in the repo.** Temp folder only, no index row, no changelog — same rule as the
   `visualize` skill.
 
-**Mechanics** — write a self-contained `.drawio` to the OS temp dir (never the repo) at a fresh timestamped path (`$TMPDIR`, or
-`%TEMP%` on Windows → `…/design-viz/<topic>-<timestamp>.drawio`); put the
-options side by side; validate it as XML; open it (`start` / `open` / `xdg-open`); then
-state the full absolute path.
+**Mechanics** — write a self-contained `.drawio` to a fresh timestamped path in
+the OS temp dir (never the repo); put the options side by side; validate it as
+XML; open it; then state the full absolute path.
 
 ## What lives in which doc
 

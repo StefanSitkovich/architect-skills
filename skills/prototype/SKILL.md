@@ -20,7 +20,7 @@ answer, throw the rest away.
 
 Identify the question — from the prompt, the surrounding code, or by asking the
 user if they're around (in chat, as plain text — never via the `AskUserQuestion`
-tool, which pins them to a menu instead of an open answer):
+tool):
 
 | The question                                            | Branch                       | Shape                                                                       |
 | ------------------------------------------------------- | ---------------------------- | --------------------------------------------------------------------------- |
@@ -29,8 +29,7 @@ tool, which pins them to a menu instead of an open answer):
 | "What should this look like?" *(greenfield — no app yet)*  | [ClickDummy](ClickDummy.md) | a clickable dummy via a UI-prototyping tool, from the design's pages          |
 | "Will this approach even work?"                         | [Spike](Spike.md)            | a throwaway tracer that de-risks a technical / architecture / integration unknown |
 
-The branches produce very different artifacts — getting the question wrong wastes
-the whole prototype. If it's genuinely ambiguous and the user isn't reachable,
+The branches produce very different artifacts. If it's genuinely ambiguous and the user isn't reachable,
 default to the branch that best fits the surrounding context and state the
 assumption at the top.
 
@@ -46,9 +45,9 @@ assumption at the top.
    thing being *checked*, not depended on; if the question is about it, hit a
    scratch store named "PROTOTYPE — wipe me".
 4. **Skip the polish.** No tests, no error handling beyond what makes it runnable,
-   no abstractions. Learn fast, then delete.
+   no abstractions.
 5. **Surface the state / the options.** Make what changed (logic) or what differs
-   (UI) visible at a glance — that's the whole point.
+   (UI) visible at a glance.
 6. **Capture the answer, then delete or absorb.** The *answer* is the only thing
    worth keeping. Write it where it belongs — an ADR in the **decision log** (via
    `design`), a **requirements** / **contracts** doc update, or a commit/issue
@@ -59,5 +58,4 @@ assumption at the top.
 
 Before writing code, write the question down in one line, in the prototype's
 location or a top-of-file comment — so it can be checked later, whether the user is
-watching now or returning to it. A prototype that answers the wrong question is
-pure waste.
+watching now or returning to it.

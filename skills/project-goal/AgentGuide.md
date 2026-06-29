@@ -22,8 +22,7 @@ exists, the goal is usually the active milestone's objective.
   interview. Mark anything unsettled as `**TBD** — <question>`, don't invent it.
 - **Edit** — setting a new goal **replaces** the current one; the guide holds
   exactly one. Don't keep a list of past goals here.
-- **Delete** — keep at least a one-line current goal; a guide with no statement of
-  what's being pursued has lost its orientation value.
+- **Delete** — keep at least a one-line current goal.
 
 > ## Goal
 >

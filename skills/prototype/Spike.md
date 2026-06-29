@@ -19,12 +19,10 @@ check, answered by *building the smallest risky slice* — not by a paper review
    compare to the "works" criterion from step 1. Label anything you couldn't measure
    as an estimate.
 4. **Capture the verdict** — works / doesn't / works-with-caveats, plus the evidence
-   — almost always an **ADR** in the **decision log** (via `design`), since a spike's
-   whole output is a technical decision and its rationale. Note any caveat the real
+   — almost always an **ADR** in the **decision log** (via `design`). Note any caveat the real
    implementation must honour.
 5. **Delete the spike** — the tracer is disposable; the decision is what's kept.
-   Don't grow the spike into the real implementation — it was built to answer one
-   question, not to last.
+   Don't grow the spike into the real implementation.
 
 ## Anti-patterns
 

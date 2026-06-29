@@ -26,7 +26,7 @@ story branch.
 - **Read-only.** Reviewers change nothing — no fixes, no commits, no "small
   cleanups". They produce findings; the user (or `implement-plan`) acts on them.
 - **Fresh eyes, one per lens.** A separate reviewer per lens, in parallel, each
-  with no stake in the work. Fresh contexts catch what the author can't see.
+  with no stake in the work.
 - **Docs are the rulebook.** Every finding ties to a documented rule (in the
   architecture, domain model, requirements, contracts, or decision-log docs) or a
   concrete defect. An opinion with no rule and no measurable

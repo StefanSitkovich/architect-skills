@@ -14,7 +14,7 @@ description: >-
 
 # Audit Coherence
 
-The keystone of the docs↔code lattice. Reconciles the two projections of every
+Reconciles the two projections of every
 **durable fact**: derive the fact-model from the docs and from the code, **join by
 id**, and report where they disagree. Read-only — it produces findings; you act on
 them.

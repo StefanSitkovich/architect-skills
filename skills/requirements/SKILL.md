@@ -15,9 +15,8 @@ description: >-
 
 The front of the chain: turn a fuzzy idea into a clear, single-source-of-truth
 **requirements doc** — the **what** and **why**, never the **how** (that's the
-**architecture** / **contracts** docs, via `design`). Requirements are downstream
-fuel: the NFRs captured here become the budgets the `implement-plan` gates and
-`review-code` check against, so capture them deliberately, not as an afterthought.
+**architecture** / **contracts** docs, via `design`). The NFRs captured here become
+the budgets the `implement-plan` gates and `review-code` check against.
 
 ## Principles
 
@@ -26,13 +25,12 @@ fuel: the NFRs captured here become the budgets the `implement-plan` gates and
   time, recommend an answer, explore existing code/docs before asking.
 - **Ask in chat, never via a tool.** Pose every question as plain text in the
   conversation. Do **not** use the `AskUserQuestion` tool — its fixed options can't
-  carry the "idk" / "zoom out" / "visualize it" affordances, and they pin the user
-  to a menu instead of an open answer.
+  carry the "idk" / "zoom out" / "visualize it" affordances.
 - **What & why, not how.** A requirement states a capability and its benefit. The
   moment you're choosing a technology or a schema you've crossed into `design`'s
   territory — stop and note it there.
 - **Single source of truth.** Each fact once; link to the **domain model** doc for
-  terms rather than redefining. Same SSoT discipline as `design`.
+  terms rather than redefining.
 - **Surface contradictions, don't paper over them.** Flag gaps and conflicts;
   capture the undecided as `TBD`, don't fill it in.
 - **Stable ids, signed off.** Each Functional Requirement and NFR carries a stable
@@ -88,5 +86,4 @@ Besides answering, three responses are always open at any question:
   never the repo); then re-pose the question.
 
 When a **significant** requirements decision lands (a scoping call, a priority
-tradeoff), record it as an ADR in the **decision log** (via `design`) — the same
-record-the-why discipline, on the what/why side.
+tradeoff), record it as an ADR in the **decision log** (via `design`).

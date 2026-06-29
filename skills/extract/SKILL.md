@@ -31,7 +31,7 @@ Reuses the shared convention in **[../audit-coherence/FactModel.md](../audit-coh
   written only on explicit user sign-off — most load-bearing for ADRs and `REQ`/`NFR`,
   which a brownfield sweep could otherwise spew. A declined proposal writes nothing.
 - **Lean.** Don't mint a `REQ` per function or an ADR per choice. Capture the capabilities
-  and decisions a future reader would actually need; the same lean bar as hand-authored docs.
+  and decisions a future reader would actually need.
 - **Tag the load-bearing, flag the rest.** Suggest `@realizes` tags where a fact clearly
   realizes a doc; leave the long tail to fuzzy-matching and report tag coverage.
 - **Interview to fill the *why*.** Code shows *what* and *how*; it rarely shows *why*. Ask

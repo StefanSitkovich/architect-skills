@@ -15,8 +15,8 @@ log.)*
 value collapses as it grows — too many ADRs is the common failure, not too few.
 Record a decision only when a future reader would genuinely **re-litigate** it and
 be worse off reverse-engineering the *why* — a chosen technology, a boundary, a
-pattern, a tradeoff with live alternatives. **Not** every micro-choice; not a diary,
-not a changelog. One lean entry per decision worth explaining.
+pattern, a tradeoff with live alternatives. **Not** every micro-choice. One lean
+entry per decision worth explaining.
 
 **Sign-off precedes writing.** A skill never writes an ADR on its own. It
 **proposes** the decision in chat — context, choice, consequences — and only on the

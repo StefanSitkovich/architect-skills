@@ -64,7 +64,7 @@ For anything that doesn't fit a standard mode:
 
 ## Output & open
 
-For the **draw.io** format (the default), write a self-contained, **multi-page** .drawio file to the OS temp directory so nothing lands in the repo (for **Mermaid**, see *Output format* above and *Mermaid mechanics* below). Resolve the temp dir from `$TMPDIR` (fallback `/tmp`, or `%TEMP%` on Windows); each run gets a fresh path `<tmpdir>/visualize-<mode>-<timestamp>/<project>-<mode>-<timestamp>.drawio`, where `<mode>` is `code`/`docs`/`plan`/`adhoc` and `<project>` is the project name. Validate it as XML after writing (snippet below). Open it for the user — `xdg-open <path>` (Linux), `open <path>` (macOS), `start <path>` (Windows). **Always** end by stating the **full absolute path** to the generated file (so the user can reopen it even if it didn't come to the foreground), along with the assumptions you interpreted.
+For the **draw.io** format (the default), write a self-contained, **multi-page** .drawio file to the OS temp directory so nothing lands in the repo (for **Mermaid**, see *Output format* above and *Mermaid mechanics* below). Resolve the temp dir from `$TMPDIR` (fallback `/tmp`, or `%TEMP%` on Windows); each run gets a fresh path `<tmpdir>/visualize-<mode>-<timestamp>/<project>-<mode>-<timestamp>.drawio`, where `<mode>` is `code`/`docs`/`plan`/`trace`/`adhoc` and `<project>` is the project name. Validate it as XML after writing (snippet below). Open it for the user — `xdg-open <path>` (Linux), `open <path>` (macOS), `start <path>` (Windows). **Always** end by stating the **full absolute path** to the generated file (so the user can reopen it even if it didn't come to the foreground), along with the assumptions you interpreted.
 
 ## draw.io mechanics
 
